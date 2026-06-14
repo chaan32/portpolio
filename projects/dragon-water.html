@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dragon Water 쇼핑몰 사이트</title>
+    <meta name="description" content="Dragon Water 쇼핑몰 사이트 풀스택 개발 프로젝트">
+    <link rel="stylesheet" href="../assets/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark">H</span>
+          <span>전해찬</span>
+        </a>
+        <div class="nav-links">
+          <a href="../index.html#projects">Projects</a>
+          <a href="../index.html#skills">Skills</a>
+          <a href="../index.html#activities">Activities</a>
+          <a href="../index.html#education">Education</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="container">
+          <div class="page-hero-card">
+            <p class="eyebrow">Project 04 · 2025.07 - 2025.10</p>
+            <h1>Dragon Water 쇼핑몰 사이트</h1>
+            <p class="lead">
+              정수기 제품 판매와 기업 고객 관리를 위한 자체 쇼핑몰 풀스택 프로젝트입니다.
+              React 기반 프론트엔드와 Spring Boot 기반 백엔드 서버를 분리하고, 상품 탐색부터 주문·결제·회원·관리자 운영까지 이어지는 커머스 흐름을 구축했습니다.
+            </p>
+            <div class="detail-actions">
+              <a class="button" href="https://github.com/chaan32/pristine-water-shop" target="_blank" rel="noreferrer">Frontend GitHub</a>
+              <a class="button" href="https://github.com/chaan32/DragonWaterBackend" target="_blank" rel="noreferrer">Backend GitHub</a>
+              <a class="button" href="../index.html#projects">목록으로</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container detail-layout">
+          <article class="detail-content">
+            <section id="overview" class="detail-section">
+              <h2>개요</h2>
+              <p>
+                Dragon Water 쇼핑몰 사이트는 일반 고객과 기업 고객이 정수기 제품을 탐색하고 구매할 수 있는 쇼핑몰입니다.
+                프론트엔드는 React, TypeScript, Vite, React Query를 기반으로 상품 목록, 상세, 장바구니, 주문, 결제 결과, 마이페이지, 고객센터, 관리자 화면을 구성했습니다.
+              </p>
+              <p>
+                백엔드는 Spring Boot 3.5.4와 Java 21 기반으로 회원 인증, 상품/카테고리, 장바구니, 주문, 결제, 배송, 문의, 공지, FAQ, 통계, 관리자 API를 제공합니다.
+                JWT 인증과 토큰 재발급 흐름을 두고, MySQL과 Redis를 Docker Compose로 함께 운영할 수 있도록 배포 구성을 잡았습니다.
+              </p>
+            </section>
+
+            <section id="features" class="detail-section">
+              <h2>핵심 기능</h2>
+              <div class="insight-grid">
+                <article class="insight-card">
+                  <span>01</span>
+                  <h3>쇼핑몰 사용자 흐름</h3>
+                  <p>메인, 브랜드 소개, 상품 목록, 상품 상세, 장바구니, 주문, 결제 결과, 마이페이지까지 이어지는 구매 경험을 구성했습니다.</p>
+                </article>
+                <article class="insight-card">
+                  <span>02</span>
+                  <h3>회원 인증</h3>
+                  <p>JWT access token과 refresh token을 사용하고, 401 응답 시 토큰 재발급 후 원 요청을 재시도하는 API 호출 흐름을 구성했습니다.</p>
+                </article>
+                <article class="insight-card">
+                  <span>03</span>
+                  <h3>관리자 운영 기능</h3>
+                  <p>상품, 카테고리, 상품 이미지, 상세 콘텐츠, 공지, FAQ, 문의, 주문, 교환/환불, 기업 회원 승인, 통계 화면을 관리자 영역으로 분리했습니다.</p>
+                </article>
+                <article class="insight-card">
+                  <span>04</span>
+                  <h3>기업 고객 관리</h3>
+                  <p>본사/지점 등 기업 고객 유형을 고려한 회원 가입, 기업 요청 승인, 본사 대시보드, 지점 주문 관리 흐름을 설계했습니다.</p>
+                </article>
+                <article class="insight-card">
+                  <span>05</span>
+                  <h3>상품 콘텐츠 관리</h3>
+                  <p>상품 이미지 업로드, 썸네일 지정, 상세 콘텐츠 저장, 메인 페이지 노출 상품 관리 등 운영자가 직접 상품 정보를 갱신할 수 있게 했습니다.</p>
+                </article>
+                <article class="insight-card">
+                  <span>06</span>
+                  <h3>고객센터</h3>
+                  <p>공지사항, FAQ, 일반 문의, 상품 문의, 클레임 기능을 구성해 구매 이후의 문의와 운영 대응 흐름을 함께 처리했습니다.</p>
+                </article>
+              </div>
+            </section>
+
+            <section id="role" class="detail-section">
+              <h2>역할</h2>
+              <ul class="bullets">
+                <li>React/TypeScript 기반 쇼핑몰 화면과 관리자 화면 구조 설계 및 구현</li>
+                <li>Spring Boot 기반 REST API 서버 설계와 도메인별 Controller, Service, Repository 구현</li>
+                <li>JWT 인증, refresh token 재발급, 인증 헤더 자동 주입, 인증 실패 처리 흐름 구성</li>
+                <li>상품, 장바구니, 주문, 결제, 회원, 문의, 공지, FAQ, 통계 API 연동</li>
+                <li>MySQL, Redis, Spring Boot 애플리케이션을 Docker Compose로 실행하는 배포 구조 구성</li>
+                <li>NCP Object Storage 기반 이미지 업로드와 상품 이미지 관리 흐름 구현</li>
+              </ul>
+            </section>
+
+            <section id="stack" class="detail-section">
+              <h2>기술 스택</h2>
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>영역</th>
+                    <th>기술</th>
+                    <th>적용 내용</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Frontend</td>
+                    <td>React, TypeScript, Vite, React Query, React Router, Tailwind CSS, Radix UI</td>
+                    <td>쇼핑몰 화면, 관리자 화면, 라우팅, 서버 상태 관리, UI 컴포넌트 구성</td>
+                  </tr>
+                  <tr>
+                    <td>Backend</td>
+                    <td>Java 21, Spring Boot 3.5.4, Spring Web, Spring Security, JPA</td>
+                    <td>도메인 API, 인증/인가, 상품·주문·회원·관리자 비즈니스 로직 구현</td>
+                  </tr>
+                  <tr>
+                    <td>Database / Cache</td>
+                    <td>MySQL 8.0, Redis 7.2</td>
+                    <td>주요 커머스 데이터 저장과 캐시/세션성 데이터 처리 기반 구성</td>
+                  </tr>
+                  <tr>
+                    <td>Auth / Integration</td>
+                    <td>JWT, Mail, NICEPAY, NCP Object Storage</td>
+                    <td>토큰 기반 인증, 이메일 인증/안내, 결제 연동, 상품 이미지 저장소 연동</td>
+                  </tr>
+                  <tr>
+                    <td>Deploy</td>
+                    <td>Docker, Docker Compose, Gradle, Vercel</td>
+                    <td>프론트엔드 배포와 백엔드 컨테이너 빌드/실행 환경 구성</td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+
+            <section id="architecture" class="detail-section">
+              <h2>시스템 구성</h2>
+              <ul class="bullets">
+                <li>프론트엔드는 Vercel 배포를 고려한 Vite React 앱으로 구성하고, API 기본 주소는 환경 변수 또는 <code>https://api.dragonwater.co.kr</code>로 분리했습니다.</li>
+                <li>백엔드는 Gradle 멀티 스테이지 Dockerfile로 JAR를 빌드한 뒤 Java 21 JRE 컨테이너에서 실행되도록 구성했습니다.</li>
+                <li>운영 컨테이너는 Spring Boot App, MySQL, Redis로 나뉘며, DB와 Redis의 healthcheck가 완료된 뒤 애플리케이션이 올라오도록 Docker Compose 의존성을 설정했습니다.</li>
+                <li>상품 이미지와 상세 콘텐츠 이미지는 Object Storage에 업로드하고, 프론트엔드에서는 스토리지 URL 생성 헬퍼로 이미지 경로를 일관되게 다룹니다.</li>
+              </ul>
+            </section>
+
+            <section id="summary" class="detail-section">
+              <h2>정리</h2>
+              <p>
+                이 프로젝트는 단순 소개 사이트가 아니라 상품 등록, 구매, 결제, 기업 고객 승인, 관리자 운영까지 포함한 커머스 서비스입니다.
+                프론트엔드와 백엔드를 분리해 책임을 명확히 나누고, 인증·주문·운영 기능이 실제 서비스 흐름 안에서 맞물리도록 설계한 점에 집중했습니다.
+              </p>
+            </section>
+          </article>
+
+          <aside class="detail-nav" aria-label="Dragon Water detail navigation">
+            <a href="#overview">개요</a>
+            <a href="#features">핵심 기능</a>
+            <a href="#role">역할</a>
+            <a href="#stack">기술 스택</a>
+            <a href="#architecture">시스템 구성</a>
+            <a href="#summary">정리</a>
+          </aside>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>멀티뷰 기반 RPS</title>
+    <meta name="description" content="멀티뷰 기반 RPS 프로젝트">
+    <link rel="stylesheet" href="../assets/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark">H</span>
+          <span>전해찬</span>
+        </a>
+        <div class="nav-links">
+          <a href="../index.html#projects">Projects</a>
+          <a href="../index.html#skills">Skills</a>
+          <a href="../index.html#activities">Activities</a>
+          <a href="../index.html#education">Education</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="container">
+          <div class="page-hero-card">
+            <p class="eyebrow">Project 01</p>
+            <h1>멀티뷰 기반 RPS</h1>
+            <p class="lead">
+              Unity 기반 공장 사각지대 환경에서 두 대의 카메라 영상을 RTSP로 입력하고,
+              BEV 절대좌표계에서 지게차와 작업자의 충돌 위험을 예측한 프로젝트입니다.
+            </p>
+            <div class="detail-actions">
+              <a class="button" href="https://github.com/chaan32/RPS" target="_blank" rel="noreferrer">GitHub</a>
+              <a class="button" href="../index.html#projects">목록으로</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container detail-layout">
+          <article class="detail-content">
+            <section id="demo" class="detail-section">
+              <h2>프로젝트 시연</h2>
+              <div class="media-grid">
+                <figure class="media-card">
+                  <img src="../assets/notion/rps/8e61130baac2262a.gif" alt="Fusion V1 시나리오 시연 GIF">
+                  <figcaption>Fusion V1 scenario</figcaption>
+                </figure>
+                <figure class="media-card">
+                  <img src="../assets/notion/rps/43428efbd58fb8d2.gif" alt="Fusion V2 시나리오 시연 GIF">
+                  <figcaption>Fusion V2 scenario</figcaption>
+                </figure>
+              </div>
+            </section>
+
+            <section id="overview" class="detail-section">
+              <h2>개요</h2>
+              <p>
+                Unity로 구현한 공장 사각지대 환경에서 지게차와 작업자가 서로 직접 보이지 않는 상황을 구성하고,
+                두 대의 카메라 영상을 RTSP로 백엔드에 입력해 멀티뷰 기반으로 충돌 위험을 예측한 프로젝트입니다.
+              </p>
+              <p>
+                각 카메라에서 검출된 작업자와 지게차의 위치를 ArUco Homography를 통해 하나의 BEV 절대좌표계로 변환하고,
+                두 카메라 정보를 통합해 단일 카메라로는 판단하기 어려운 사각지대 충돌 위험을 Warning / Danger 단계로 예측했습니다.
+              </p>
+            </section>
+
+            <section id="role" class="detail-section">
+              <h2>역할</h2>
+              <ul class="bullets">
+                <li>Unity 기반 공장 사각지대 시나리오와 cam1 / cam2 멀티뷰 입력 환경 구성</li>
+                <li>FFmpeg + MediaMTX 기반 RTSP 스트리밍 파이프라인 구축</li>
+                <li>YOLO-Pose를 활용한 작업자 위치 검출, Custom YOLO를 활용한 지게차 검출 구현</li>
+                <li>ArUco Marker와 Homography를 활용해 픽셀 좌표를 BEV 절대좌표로 변환</li>
+                <li>cam1 / cam2에서 추정된 객체 좌표를 하나의 좌표계로 통합하는 fusion 로직 구현</li>
+                <li>거리, 진행 방향, TTC, 지게차 전방 기준점(FH)을 활용한 Warning / Danger 판단 로직 구현</li>
+                <li>camera parallel, model parallel, input tuning, pose skip/cache를 적용해 3.145 FPS에서 10.148 FPS로 개선</li>
+                <li>1 frame 처리 시간을 약 0.320s에서 약 0.099s로 단축</li>
+                <li>위험 이벤트 발생 시 PostgreSQL incident log 저장, snapshot 저장, MQTT 알림, 리포트 생성 흐름까지 E2E 검증</li>
+                <li>대량 사고 로그 조회에서 Elasticsearch 기반 검색과 PostgreSQL 복합 인덱스 기반 검색을 비교하고, 날짜 조회 패턴에 맞춰 PostgreSQL 인덱싱을 적용해 p50 기준 0.097ms까지 조회 성능을 개선</li>
+              </ul>
+            </section>
+
+            <section id="architecture" class="detail-section">
+              <h2>시스템 아키텍처</h2>
+              <div class="media-grid">
+                <figure class="media-card wide-media">
+                  <img src="../assets/notion/rps/096de55a4563b670.png" alt="RPS 시스템 플로우">
+                  <figcaption>시스템 플로우</figcaption>
+                </figure>
+                <figure class="media-card wide-media">
+                  <img src="../assets/notion/rps/74a9a01b28cfc265.png" alt="RPS 시스템 아키텍처">
+                  <figcaption>시스템 아키텍처</figcaption>
+                </figure>
+              </div>
+            </section>
+
+            <section id="models" class="detail-section">
+              <h2>적용한 추론 모델</h2>
+              <h3>Custom YOLO</h3>
+              <ul class="bullets">
+                <li>YOLO11n 계열 detect 커스텀 모델</li>
+                <li>탐지 클래스: forklift, box_1 (인양물)</li>
+                <li>역할: 지게차와 인양물을 bbox로 탐지하고, bbox 기준점을 절대좌표로 변환해서 Fusion 모델에 주입</li>
+              </ul>
+              <figure class="media-card wide-media">
+                <img src="../assets/notion/rps/77d120c479967720.png" alt="Custom YOLO 결과 이미지">
+                <figcaption>Custom YOLO</figcaption>
+              </figure>
+
+              <h3>YOLO - POSE</h3>
+              <ul class="bullets">
+                <li>YOLO11n-pose</li>
+                <li>탐지 클래스: person (worker)</li>
+                <li>작업자를 탐지하고 17개의 keypoint를 추출</li>
+                <li>이후 절대좌표로 변환하여 어디에 작업자가 서 있는지 계산</li>
+              </ul>
+
+              <h3>모델의 성능 지표</h3>
+              <table class="data-table">
+                <thead>
+                  <tr><th>Model</th><th>Accuracy</th><th>Precision</th><th>Recall</th><th>F1</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Custom YOLO</td><td>97.721%</td><td>96.449%</td><td>97.123%</td><td>96.785%</td></tr>
+                  <tr><td>YOLO-Pose worker detection</td><td>98.333%</td><td>100.000%</td><td>99.167%</td><td>99.582%</td></tr>
+                  <tr><td>Fusion V1 overall</td><td>92.188%</td><td>93.499%</td><td>82.287%</td><td>84.927%</td></tr>
+                  <tr><td>Fusion V2 GRU risk prediction</td><td>99.696%</td><td>99.119%</td><td>99.301%</td><td>99.210%</td></tr>
+                </tbody>
+              </table>
+
+              <h3>Fusion model의 V1, V2 상세 비교</h3>
+              <table class="data-table">
+                <thead>
+                  <tr><th>구분</th><th>V1</th><th>V2</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>판단 방식</td><td>규칙 기반 + TTC + FH + DropZone 조건</td><td>24프레임 좌표 window 기반 GRU</td></tr>
+                  <tr><td>평가 대상</td><td>기존 Fusion overall 평가셋</td><td>geometry_future V2 평가셋</td></tr>
+                  <tr><td>라벨 기준</td><td>기존 위험 판단/시나리오 기준</td><td>좌표 거리 + 미래 12프레임 위험 기준</td></tr>
+                  <tr><td>의미</td><td>규칙 기반 위험 판단 성능</td><td>좌표 시계열 기반 위험 예측 성능</td></tr>
+                </tbody>
+              </table>
+              <div class="note-panel">단, Fusion V2는 V1과 동일한 규칙 평가셋이 아니라, 절대좌표 기반 geometry_future 라벨로 구성한 별도 평가셋에서 측정한 확장 모델 성능</div>
+            </section>
+
+            <section id="improvements" class="detail-section">
+              <h2>개선 사항</h2>
+              <div class="improvement-list">
+                <article class="improvement-card">
+                  <div class="improvement-head">
+                    <h3 class="improvement-title">단일 카메라만으로 사각지대 충돌 위험 판단의 어려움</h3>
+                    <span class="improvement-kicker">상황 1</span>
+                  </div>
+                  <div class="improvement-grid">
+                    <div class="improvement-panel">
+                      <span class="improvement-label">AS-IS</span>
+                      <p>Cam1 또는 Cam2 한쪽 영상만으로는 지게차와 작업자의 실제 위치 관계를 판단하기 어려웠습니다.</p>
+                    </div>
+                    <div class="improvement-panel to-be">
+                      <span class="improvement-label">TO-BE</span>
+                      <p>두 카메라의 검출 결과를 ArUco Homography 기반 BEV 절대 좌표로 변환하여 하나의 평면에서 충돌 위험을 계산할 수 있었습니다.</p>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="improvement-card">
+                  <div class="improvement-head">
+                    <h3 class="improvement-title">카메라 별 좌표 오차</h3>
+                    <span class="improvement-kicker">상황 2</span>
+                  </div>
+                  <div class="improvement-grid">
+                    <div class="improvement-panel">
+                      <span class="improvement-label">AS-IS</span>
+                      <p>Cam1, Cam2 모두 잡힌 객체의 변환된 절대 좌표가 다르게 나타나 BEV 상 위치의 신뢰도가 떨어졌습니다.</p>
+                    </div>
+                    <div class="improvement-panel to-be">
+                      <span class="improvement-label">TO-BE</span>
+                      <p>Cam1 / Cam2 각각에 대해 4개의 ArUco Marker를 기준점으로 Homography를 재생성했습니다. cv2.findHomography 기반으로 픽셀 좌표를 BEV 절대 좌표로 모두 변환하고 카메라 별 Homography를 분리 저장했습니다. 이로써 최종 캘리브레이션 기준, 평균 재투영 오차 2.72e-7m ~ 4.58e-7m로 출력 기준 0.00cm 수준까지 보정하여 신뢰도를 높였습니다.</p>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="improvement-card">
+                  <div class="improvement-head">
+                    <h3 class="improvement-title">작업자 인식 불안정</h3>
+                    <span class="improvement-kicker">상황 3</span>
+                  </div>
+                  <div class="improvement-grid">
+                    <div class="improvement-panel">
+                      <span class="improvement-label">AS-IS</span>
+                      <p>특정 시나리오에서 작업자가 Cam1 또는 Cam2 한쪽에서 bbox / pose로 안정적으로 검출되지 않아, fusion 모델의 작업자 관련 입력이 비어 충돌 위험 예측이 불가능했습니다.</p>
+                    </div>
+                    <div class="improvement-panel to-be">
+                      <span class="improvement-label">TO-BE</span>
+                      <p>YOLO11s-pose를 적용하고 pose 입력 크기를 640으로 유지했습니다. 카메라 위치와 FOV도 조정해 작업자가 프레임 안에서 충분한 크기로 보이도록 수정했고, 충돌 시나리오 3개의 총 45회 벤치마크 기준 작업자 detection 확률 1.00을 확보했습니다.</p>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="improvement-card">
+                  <div class="improvement-head">
+                    <h3 class="improvement-title">위험 알림 지연</h3>
+                    <span class="improvement-kicker">상황 4</span>
+                  </div>
+                  <div class="improvement-grid">
+                    <div class="improvement-panel">
+                      <span class="improvement-label">AS-IS</span>
+                      <p>지게차 bbox 중심점을 기준으로 위험도를 계산해 실제 충돌 가능성이 높은 전방부가 아닌 차체 중심이 기준이 되었고, Warning / Danger 판단이 늦게 발생했습니다.</p>
+                    </div>
+                    <div class="improvement-panel to-be">
+                      <span class="improvement-label">TO-BE</span>
+                      <p>이전 프레임 좌표와 현재 좌표로 진행 방향 벡터를 추정하고, 현재 위치보다 진행 방향 앞쪽에 FH(Front Hazard) 기준점을 추가했습니다. FH offset은 비교 실험 후 1.0m로 적용했고, Danger 시점을 최대 0.7s, 최소 0.15s 앞당겼습니다.</p>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="improvement-card">
+                  <div class="improvement-head">
+                    <h3 class="improvement-title">실시간 처리 성능 부족</h3>
+                    <span class="improvement-kicker">상황 5</span>
+                  </div>
+                  <div class="improvement-grid">
+                    <div class="improvement-panel">
+                      <span class="improvement-label">AS-IS</span>
+                      <p>초기 순차 처리 구조에서는 cam1 pose, cam2 pose, custom YOLO, fusion 계산이 대부분 한 루프 안에서 순차적으로 실행되어 평균 약 3.145 FPS, frame당 약 0.320s 수준이었습니다.</p>
+                    </div>
+                    <div class="improvement-panel to-be">
+                      <span class="improvement-label">TO-BE</span>
+                      <p>카메라 단위 병렬 처리, 모델 단위 병렬 처리, custom YOLO 입력 크기 640에서 512 조정, pose 2프레임 1회 추론 및 cache 재사용을 적용했습니다. 45회 벤치마크 기준 평균 10.148 FPS, frame당 98.966ms까지 개선했습니다.</p>
+                    </div>
+                  </div>
+                  <table class="data-table">
+                    <thead>
+                      <tr><th>단계</th><th>내용</th><th>FPS</th><th>직전 대비 FPS 향상</th><th>1 frame 처리시간</th><th>직전 대비 처리시간 감소</th></tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>0</td><td>초기 serial 처리</td><td>3.145 FPS</td><td>-</td><td>0.320s</td><td>-</td></tr>
+                      <tr><td>1</td><td>카메라별 병렬 처리</td><td>5.488 FPS</td><td>+74.5%</td><td>0.183s</td><td>43.0% 감소</td></tr>
+                      <tr><td>2</td><td>모델별 병렬 처리</td><td>6.335 FPS</td><td>+15.4%</td><td>0.158s</td><td>13.5% 감소</td></tr>
+                      <tr><td>3</td><td>custom YOLO 이미지 크기 조정</td><td>7.364 FPS</td><td>+16.2%</td><td>0.136s</td><td>14.2% 감소</td></tr>
+                      <tr><td>4</td><td>pose 2프레임에 1번 추론</td><td>10.148 FPS</td><td>+37.8%</td><td>0.099s</td><td>27.0% 감소</td></tr>
+                    </tbody>
+                  </table>
+                  <div class="note-panel">FPS 향상률 = (새 FPS - 직전 FPS) / 직전 FPS<br>frame time 감소율 = (직전 처리시간 - 새 처리시간) / 직전 처리시간</div>
+                </article>
+
+                <article class="improvement-card">
+                  <div class="improvement-head">
+                    <h3 class="improvement-title">장기 작업으로 인한 API 응답 지연</h3>
+                    <span class="improvement-kicker">상황 6</span>
+                  </div>
+                  <div class="improvement-grid">
+                    <div class="improvement-panel">
+                      <span class="improvement-label">AS-IS</span>
+                      <p>리포트 생성 API가 Ollama 리포트 생성을 모두 마칠 때까지 응답하지 않는 동기 처리 구조였습니다. 실제 날짜 기반 리포트 생성 요청은 약 71초가 걸렸고, 목록 조회 API는 전체 HTML contents까지 반환해 응답 크기가 커졌습니다.</p>
+                    </div>
+                    <div class="improvement-panel to-be">
+                      <span class="improvement-label">TO-BE</span>
+                      <p>리포트 생성 작업을 Redis 기반 Background Job으로 분리했습니다. 서버는 작업 등록 후 Job_id를 즉시 반환하고, 프론트는 job 상태를 조회한 뒤 완료 시 리포트를 가져오도록 개선했습니다. 목록 화면에는 경량 조회 API를 추가했습니다.</p>
+                    </div>
+                  </div>
+                  <table class="data-table">
+                    <thead><tr><th>내용</th><th>개선 전</th><th>개선 후</th><th>개선 효과</th></tr></thead>
+                    <tbody><tr><td>리포트 목록 응답 크기</td><td>97,761 bytes</td><td>729 bytes</td><td>약 99.25% 감소</td></tr></tbody>
+                  </table>
+                </article>
+
+                <article class="improvement-card">
+                  <div class="improvement-head">
+                    <h3 class="improvement-title">사고 로그 검색 성능 개선</h3>
+                    <span class="improvement-kicker">상황 7</span>
+                  </div>
+                  <div class="improvement-grid">
+                    <div class="improvement-panel">
+                      <span class="improvement-label">AS-IS</span>
+                      <p>총 300,391건의 사고 로그를 구성해 300건의 사고 로그를 1000일에 분산한 조건으로 시험했습니다. 빠른 검색을 위해 Elasticsearch를 도입했지만, 실제 날짜 조건 성능은 기대만큼 나오지 않았습니다.</p>
+                    </div>
+                    <div class="improvement-panel to-be">
+                      <span class="improvement-label">TO-BE</span>
+                      <p>날짜 정보를 별도 컬럼으로 분리하고 PostgreSQL에 조회 패턴에 맞는 복합 인덱스를 적용했습니다. 날짜 조건 검색 p50은 0.097ms로 측정되었고, Elasticsearch 대비 약 46배 빠른 성능을 확인했습니다.</p>
+                    </div>
+                  </div>
+                  <table class="data-table">
+                    <thead><tr><th>실험 항목</th><th>방식</th><th>평균</th><th>p50</th><th>p95</th><th>결과</th></tr></thead>
+                    <tbody>
+                      <tr><td>날짜 컬럼 검색</td><td>PostgreSQL Index</td><td>0.480ms</td><td>0.097ms</td><td>0.660ms</td><td>가장 빠름</td></tr>
+                      <tr><td>날짜 컬럼 검색</td><td>Elasticsearch Filter</td><td>5.376ms</td><td>4.528ms</td><td>7.960ms</td><td>PostgreSQL 대비 불리</td></tr>
+                    </tbody>
+                  </table>
+                </article>
+
+                <article class="improvement-card">
+                  <div class="improvement-head">
+                    <h3 class="improvement-title">공중 인양물의 DropZone 좌표 오차 및 위험 반응 손실</h3>
+                    <span class="improvement-kicker">상황 8</span>
+                  </div>
+                  <div class="improvement-grid">
+                    <div class="improvement-panel">
+                      <span class="improvement-label">AS-IS</span>
+                      <p>공중 인양물은 바닥에 붙어 있는 물체가 아니기 때문에 bbox 기준 절대좌표 변환이 안정적으로 되지 않았습니다. 그 결과 프레임이 끊기고 위험 상황을 놓치는 문제가 있었습니다.</p>
+                    </div>
+                    <div class="improvement-panel to-be">
+                      <span class="improvement-label">TO-BE</span>
+                      <p>카메라 위치를 조정하고, bbox 중심 픽셀에서 카메라 ray를 쏴 인양물과 같은 높이에서 만나는 지점을 절대좌표로 계산했습니다. 반경 2.0m를 DropZone으로 계산해 BEV 내 프레임이 안정적으로 유지되도록 개선했습니다.</p>
+                    </div>
+                  </div>
+                  <table class="data-table">
+                    <thead><tr><th>항목</th><th>개선 전</th><th>개선 후</th><th>비고</th></tr></thead>
+                    <tbody>
+                      <tr><td>raw DropZone 누락 프레임</td><td>64 / 120</td><td>0 / 120</td><td>누락 프레임 없음</td></tr>
+                      <tr><td>tracker 후 DropZone 누락 프레임</td><td>48 / 120</td><td>0 / 120</td><td>누락 프레임 없음</td></tr>
+                      <tr><td>Danger frame</td><td>0</td><td>20</td><td>위험 판단 누락 감소</td></tr>
+                      <tr><td>first_danger_frame</td><td>없음</td><td>45</td><td>위험 판단 누락 감소</td></tr>
+                      <tr><td>W01 DropZone 최소 거리</td><td>1.433m</td><td>Danger 발생</td><td>1.4m 거리에서도 위험 알림</td></tr>
+                      <tr><td>W02 DropZone 최소 거리</td><td>1.801m</td><td>Danger 발생</td><td>1.8m 거리에서도 위험 알림</td></tr>
+                    </tbody>
+                  </table>
+                </article>
+
+                <article class="improvement-card">
+                  <div class="improvement-head">
+                    <h3 class="improvement-title">규칙 기반 Fusion 모델의 위험 판단 한계</h3>
+                    <span class="improvement-kicker">상황 9</span>
+                  </div>
+                  <div class="improvement-grid">
+                    <div class="improvement-panel">
+                      <span class="improvement-label">AS-IS</span>
+                      <p>기존 모델은 BEV 절대좌표, 거리, TTC, 지게차 진행 방향, FH 기준점 등을 조합해 Warning / Danger를 판단하는 규칙 기반 구조였습니다. 시나리오가 복잡해질수록 임계값과 예외 조건이 계속 늘어나는 한계가 있었습니다.</p>
+                    </div>
+                    <div class="improvement-panel to-be">
+                      <span class="improvement-label">TO-BE</span>
+                      <p>최근 24프레임 동안의 작업자, 지게차, FH 기준점, 인양물 DropZone의 BEV 절대좌표 시계열을 입력으로 사용하는 GRU 기반 Fusion V2 위험 예측 모델을 구성했습니다.</p>
+                    </div>
+                  </div>
+                  <p>Fusion V2 학습 데이터는 실제 Unity 녹화 시나리오 7개와, SAFE / WARNING / DANGER 상황이 균형 있게 포함되도록 절대좌표 기반으로 절차적 생성한 synthetic 시나리오 450개를 결합해 구축했습니다. 그 결과 기존 Fusion V1 대비 F1-score는 84.9%에서 99.2%로 14.3%p 개선되었고, Accuracy는 92.2%에서 99.7%로 7.5%p 개선되었습니다.</p>
+                  <table class="data-table">
+                    <thead><tr><th>항목</th><th>값</th></tr></thead>
+                    <tbody>
+                      <tr><td>입력</td><td>24프레임 BEV 절대좌표 시계열</td></tr>
+                      <tr><td>Feature 수</td><td>23개</td></tr>
+                      <tr><td>실제 녹화 시나리오</td><td>7개</td></tr>
+                      <tr><td>Synthetic 시나리오</td><td>450개</td></tr>
+                      <tr><td>전체 window</td><td>89,176개</td></tr>
+                      <tr><td>학습 window</td><td>67,096개</td></tr>
+                      <tr><td>검증 window</td><td>11,040개</td></tr>
+                      <tr><td>모델</td><td>2-layer GRU</td></tr>
+                    </tbody>
+                  </table>
+                </article>
+              </div>
+            </section>
+
+            <section id="result" class="detail-section">
+              <h2>결과 및 소감</h2>
+              <p>
+                이번 프로젝트에서는 단순히 객체를 탐지하는 데서 끝나지 않고, 실제 산업 현장에서 발생할 수 있는 사각지대 충돌 상황을 Unity로 구성하고,
+                이를 RTSP 입력부터 객체 검출, 절대좌표 변환, 멀티뷰 좌표 통합, 위험 판단, 알림, DB 저장, 리포트 생성까지 하나의 E2E 파이프라인으로 구현했습니다.
+              </p>
+              <p>
+                특히 단일 카메라로는 판단하기 어려운 지게차와 작업자의 위치 관계를 ArUco Homography 기반 BEV 절대좌표계로 통합하면서,
+                멀티뷰 기반 충돌 예측 시스템의 전체 흐름을 직접 설계하고 검증했습니다. 초기에는 좌표 오차, 작업자 검출 불안정, 위험 알림 지연,
+                낮은 실시간 처리 성능 등 여러 문제가 있었지만, 카메라 배치 조정, FH 기준점 도입, 병렬 처리, 입력 크기 튜닝, pose cache 적용을 통해
+                실시간 처리 성능을 3.145 FPS에서 10.148 FPS까지 개선했습니다.
+              </p>
+              <p>
+                이 프로젝트를 통해 AI 모델의 단순 추론 성능뿐 아니라, 영상 입력, 좌표 변환, 실시간 처리, 비동기 백엔드 작업, DB 검색 최적화,
+                프론트 대시보드까지 연결되는 백엔드 중심 AI 시스템을 어떻게 설계하고 병목을 개선해야 하는지 경험할 수 있었습니다. 향후에는 실제 CCTV 영상 기반 데이터셋을 추가해
+                Unity와 현실 환경 간의 도메인 차이를 줄이고, 작업자 ID 식별 안정화와 운영 모니터링까지 확장해 실제 현장 적용 가능성을 높이고자 합니다.
+              </p>
+            </section>
+          </article>
+
+          <aside class="detail-nav" aria-label="Page sections">
+            <a href="#demo">시연</a>
+            <a href="#overview">개요</a>
+            <a href="#role">역할</a>
+            <a href="#architecture">아키텍처</a>
+            <a href="#models">모델</a>
+            <a href="#improvements">개선</a>
+            <a href="#result">결과</a>
+          </aside>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

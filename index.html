@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>전해찬 Portfolio</title>
+    <meta name="description" content="백엔드 개발자 전해찬 포트폴리오">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav-shell" aria-label="Primary">
+        <div class="nav-links">
+          <a class="is-active" href="#home">Home</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#activities">Activities</a>
+          <a href="#education">Education</a>
+          <a href="#certifications">Certifications</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section id="home" class="hero">
+        <div class="container">
+          <div class="notion-page-icon" aria-hidden="true">🧑‍💻</div>
+          <p class="hero-kicker">전해찬 · Backend Developer</p>
+          <h1 class="hero-title">전해찬 Portfolio</h1>
+        </div>
+      </section>
+
+      <section id="about" class="section about-section">
+        <div class="container about-grid">
+          <figure class="profile-card">
+            <img src="assets/notion/home/c7727d62515a3397.jpeg" alt="전해찬 프로필 이미지">
+            <figcaption class="profile-contact">
+              <span>Contact</span>
+              <div class="profile-actions" aria-label="Contact links">
+                <a class="profile-action" href="mailto:haechan8864@naver.com" aria-label="Email">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4 6h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Zm0 2v.3l8 5.1 8-5.1V8H4Zm0 2.7V16h16v-5.3l-7.46 4.75a1 1 0 0 1-1.08 0L4 10.7Z"></path>
+                  </svg>
+                  <span>Email</span>
+                </a>
+                <a class="profile-action" href="https://github.com/chaan32" target="_blank" rel="noreferrer" aria-label="GitHub">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.58.11.79-.25.79-.56v-2.02c-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.04 0 0 .97-.31 3.17 1.18A10.9 10.9 0 0 1 12 6.2c.98 0 1.96.13 2.88.39 2.2-1.49 3.16-1.18 3.16-1.18.63 1.58.23 2.75.11 3.04.74.8 1.18 1.83 1.18 3.08 0 4.42-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.03c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"></path>
+                  </svg>
+                  <span>GitHub</span>
+                </a>
+              </div>
+            </figcaption>
+          </figure>
+          <div class="about-info">
+            <div class="info-block">
+              <h2>INTERESTED IN</h2>
+              <ul class="line-list">
+                <li>Real-time Data Processing</li>
+                <li>Backend API & Database</li>
+                <li>AI Model Integration</li>
+                <li>Performance Optimization</li>
+              </ul>
+            </div>
+            <div class="info-block">
+              <h2>ABOUT ME</h2>
+              <p class="about-copy">
+                실시간 데이터 처리, 백엔드 API, AI 모델 연동, 성능 개선에 관심이 있는 백엔드 개발자입니다.
+                기능 구현에서 끝내지 않고 병목, 신뢰성, 운영 가능성을 함께 확인하는 개발을 지향합니다.
+              </p>
+              <ul class="line-list">
+                <li>새로운 기술을 빠르게 학습하고 실제 프로젝트에 적용하며 성장합니다.</li>
+                <li>문제가 발생했을 때 원인을 끝까지 추적하고 다시 실행 가능한 문서와 지표로 정리합니다.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section projects-section">
+        <div class="container">
+          <div class="section-title oversized">
+            <span>Projects</span>
+            <h2>Projects</h2>
+          </div>
+          <div class="project-grid">
+            <a class="project-card primary-project" href="projects/rps.html">
+              <div class="project-cover">
+                <img src="assets/covers/rps-cover.png" alt="멀티뷰 기반 RPS 시연 화면">
+              </div>
+              <div class="project-card-head">
+                <h3>멀티뷰 기반 RPS</h3>
+                <span>2026.04 - 2026.06</span>
+              </div>
+              <p>Unity 공장 사각지대 환경에서 두 대의 카메라 영상을 RTSP로 입력하고, ArUco Homography 기반 BEV 좌표계로 통합해 충돌 위험을 예측했습니다.</p>
+              <ul>
+                <li>3.145 FPS에서 10.148 FPS로 실시간 처리 성능 개선</li>
+                <li>PostgreSQL 인덱싱으로 사고 로그 날짜 검색 p50 0.097ms 달성</li>
+                <li>GRU 기반 Fusion V2 위험 예측 모델 연결</li>
+              </ul>
+              <div class="project-tags">
+                <span>YOLO</span><span>RTSP</span><span>PostgreSQL</span><span>Redis</span>
+              </div>
+            </a>
+
+            <a class="project-card" href="projects/arcane.html">
+              <div class="project-cover">
+                <img src="assets/covers/arcane-cover.png" alt="ARCANE 챔피언 분석 화면">
+              </div>
+              <div class="project-card-head">
+                <h3>ARCANE</h3>
+                <span>2026.01 - 2026.06</span>
+              </div>
+              <p>Riot Games API 기반 LOL 전적 검색, 챔피언 분석, 랭킹 갱신, 공략 게시판과 실시간 채팅을 제공하는 게임 정보 분석 서비스입니다.</p>
+              <ul>
+                <li>단일 서버 구조를 API / Worker / AI Server로 분리</li>
+                <li>Kafka 기반 비동기 작업 처리 구조 도입</li>
+                <li>Elasticsearch 기반 검색 성능 개선</li>
+              </ul>
+              <div class="project-tags">
+                <span>Spring</span><span>Kafka</span><span>MongoDB</span><span>Elasticsearch</span>
+              </div>
+            </a>
+
+            <a class="project-card muted-project" href="projects/pu.html">
+              <div class="project-cover">
+                <img src="assets/covers/convenience-cover.png" alt="편의점 분석 보고서 표지">
+              </div>
+              <div class="project-card-head">
+                <h3>편의점 분석</h3>
+                <span>2026.03</span>
+              </div>
+              <p>CU 왕십리점의 고객, 판매, 상품, 날씨 데이터를 분석해 구매 패턴을 파악하고 RFM 회원등급, 상품 재배치, PB·날씨·이벤트 전략으로 매출 증대 방안을 제안했습니다.</p>
+              <ul>
+                <li>497,610건 판매 데이터와 고객·상품·날씨 데이터 정제</li>
+                <li>RFM, 연관분석, 트렌드 분석 기반 개선안 도출</li>
+                <li>상품 배치와 소비 트렌드 반영으로 매출 상승 시나리오 제시</li>
+              </ul>
+              <div class="project-tags">
+                <span>Data Analysis</span><span>RFM</span><span>Association Rule</span><span>5명</span>
+              </div>
+            </a>
+
+            <a class="project-card muted-project" href="projects/dragon-water.html">
+              <div class="project-cover project-cover-top">
+                <img src="assets/covers/dragonwater-cover.png" alt="Dragon Water 쇼핑몰 사이트 화면">
+              </div>
+              <div class="project-card-head">
+                <h3>Dragon Water 쇼핑몰 사이트</h3>
+                <span>2025.07 - 2025.10</span>
+              </div>
+              <p>정수기 제품 판매와 기업 고객 관리를 위한 Dragon Water 자체 쇼핑몰입니다. React 기반 프론트엔드와 Spring Boot 백엔드를 분리해 상품, 주문, 결제, 회원, 관리자 기능을 구현했습니다.</p>
+              <ul>
+                <li>JWT 인증과 토큰 재발급 흐름을 포함한 사용자/관리자 API 연동</li>
+                <li>상품, 장바구니, 주문, 결제, 문의, 공지, FAQ 관리 기능 구성</li>
+                <li>Docker Compose 기반 MySQL, Redis, Spring Boot 서버 배포 구조 설계</li>
+              </ul>
+              <div class="project-tags">
+                <span>React</span><span>Spring Boot</span><span>MySQL</span><span>Redis</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="section">
+        <div class="container">
+          <div class="section-title">
+            <span>Skills</span>
+            <h2>기술 스택</h2>
+          </div>
+          <div class="skill-table-wrap" aria-label="기술 스택 표">
+            <table class="skill-table">
+              <thead>
+                <tr>
+                  <th scope="col"><span class="property-icon">Aa</span>Category</th>
+                  <th scope="col"><span class="property-icon">☷</span>Strong</th>
+                  <th scope="col"><span class="property-icon">☷</span>Knowledgeable</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"><span class="row-number">1</span>Language</th>
+                  <td>
+                    <div class="tag-list">
+                      <span class="skill-tag tag-red">C</span>
+                      <span class="skill-tag tag-gold">JAVA</span>
+                      <span class="skill-tag tag-blue">Python</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="tag-list">
+                      <span class="skill-tag tag-pink">JavaScript</span>
+                      <span class="skill-tag tag-red">TypeScript</span>
+                      <span class="skill-tag tag-brown">HTML</span>
+                      <span class="skill-tag tag-gray">CSS</span>
+                      <span class="skill-tag tag-dark">PHP</span>
+                      <span class="skill-tag tag-gold">C#</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row"><span class="row-number">2</span>Backend</th>
+                  <td>
+                    <div class="tag-list">
+                      <span class="skill-tag tag-green">Spring Boot</span>
+                      <span class="skill-tag tag-green">Spring Security</span>
+                      <span class="skill-tag tag-dark">JPA</span>
+                      <span class="skill-tag tag-pink">FastAPI</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="tag-list">
+                      <span class="skill-tag tag-green">OAuth2</span>
+                      <span class="skill-tag tag-gold">JWT</span>
+                      <span class="skill-tag tag-purple">QueryDSL</span>
+                      <span class="skill-tag tag-blue">REST API</span>
+                      <span class="skill-tag tag-blue">Flask</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row"><span class="row-number">3</span>Frontend</th>
+                  <td>
+                    <div class="tag-list">
+                      <span class="skill-tag tag-dark">Next.js</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="tag-list">
+                      <span class="skill-tag tag-brown">React</span>
+                      <span class="skill-tag tag-purple">React-Query</span>
+                      <span class="skill-tag tag-red">TypeScript</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row"><span class="row-number">4</span>RDBMS</th>
+                  <td>
+                    <div class="tag-list">
+                      <span class="skill-tag tag-purple">MySQL</span>
+                      <span class="skill-tag tag-dark">PostgreSQL</span>
+                    </div>
+                  </td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th scope="row"><span class="row-number">5</span>NoSQL / Cache</th>
+                  <td>
+                    <div class="tag-list">
+                      <span class="skill-tag tag-green">MongoDB</span>
+                      <span class="skill-tag tag-brown">Redis</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="tag-list">
+                      <span class="skill-tag tag-gold">Elasticsearch</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row"><span class="row-number">6</span>Infra / DevOps</th>
+                  <td>
+                    <div class="tag-list">
+                      <span class="skill-tag tag-brown">Docker</span>
+                      <span class="skill-tag tag-brown">Docker Compose</span>
+                      <span class="skill-tag tag-purple">Git</span>
+                      <span class="skill-tag tag-gray">GitHub</span>
+                      <span class="skill-tag tag-dark">GitHub Actions</span>
+                      <span class="skill-tag tag-gold">AWS EC2</span>
+                      <span class="skill-tag tag-gold">AWS S3</span>
+                      <span class="skill-tag tag-green">Nginx</span>
+                      <span class="skill-tag tag-blue">Vercel</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="tag-list">
+                      <span class="skill-tag tag-gray">GHCR</span>
+                      <span class="skill-tag tag-gray">GitHub Packages</span>
+                      <span class="skill-tag tag-green">Certbot</span>
+                      <span class="skill-tag tag-blue">DNS</span>
+                      <span class="skill-tag tag-dark">Linux</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row"><span class="row-number">7</span>Monitoring / Logging</th>
+                  <td>
+                    <div class="tag-list">
+                      <span class="skill-tag tag-red">Prometheus</span>
+                      <span class="skill-tag tag-orange">Grafana</span>
+                      <span class="skill-tag tag-gold">ELK</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="tag-list">
+                      <span class="skill-tag tag-gold">Logstash</span>
+                      <span class="skill-tag tag-blue">Kibana</span>
+                      <span class="skill-tag tag-green">Micrometer</span>
+                      <span class="skill-tag tag-green">Spring Actuator</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row"><span class="row-number">8</span>RealTime / Messaging</th>
+                  <td>
+                    <div class="tag-list">
+                      <span class="skill-tag tag-dark">Kafka</span>
+                      <span class="skill-tag tag-blue">WebSocket</span>
+                      <span class="skill-tag tag-purple">STOMP</span>
+                      <span class="skill-tag tag-brown">Redis</span>
+                      <span class="skill-tag tag-gray">RTSP</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="tag-list">
+                      <span class="skill-tag tag-pink">SockJS</span>
+                      <span class="skill-tag tag-dark">FFmpeg</span>
+                      <span class="skill-tag tag-gold">MediaMTX</span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row"><span class="row-number">9</span>Vision / AI</th>
+                  <td>
+                    <div class="tag-list">
+                      <span class="skill-tag tag-dark">OpenCV</span>
+                      <span class="skill-tag tag-brown">YOLO</span>
+                      <span class="skill-tag tag-green">YOLO-POSE</span>
+                      <span class="skill-tag tag-red">Homography</span>
+                      <span class="skill-tag tag-gold">Ollama</span>
+                      <span class="skill-tag tag-blue">Pandas</span>
+                      <span class="skill-tag tag-purple">Scikit-learn</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="tag-list">
+                      <span class="skill-tag tag-red">PyTorch</span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="activities" class="section timeline-section experience-section">
+        <div class="container">
+          <div class="experience-groups">
+            <section class="experience-group" aria-labelledby="activities-title">
+              <h3 id="activities-title" class="experience-category">Activities</h3>
+              <div class="timeline">
+                <article class="timeline-item">
+                  <div class="timeline-dot" aria-hidden="true"></div>
+                  <div class="timeline-content">
+                    <span class="date-pill">2026.02 ~ 2026.02</span>
+                    <h3>POSCO 청년 AI Big Data 아카데미 32기</h3>
+                    <p class="timeline-role">AI · Big Data 교육 과정 수료</p>
+                    <ul>
+                      <li>AI와 Big Data 기반 문제 해결 과정을 학습하고 실무형 과제를 수행</li>
+                      <li>AI 과제 프로젝트 장려상 <span class="award-pill">수상</span></li>
+                      <li>Big Data 과제 프로젝트 우수상 <span class="award-pill">수상</span></li>
+                    </ul>
+                  </div>
+                </article>
+
+                <article class="timeline-item">
+                  <div class="timeline-dot" aria-hidden="true"></div>
+                  <div class="timeline-content">
+                    <span class="date-pill">2025.02 ~ 2025.06</span>
+                    <h3>TAVE 백엔드 활동</h3>
+                    <p class="timeline-role">IT 연합 동아리 · 실시간 통신 구조 학습</p>
+                    <ul>
+                      <li>WebSocket, STOMP, Redis 기반 실시간 통신 구조 학습</li>
+                    </ul>
+                  </div>
+                </article>
+
+                <article class="timeline-item">
+                  <div class="timeline-dot" aria-hidden="true"></div>
+                  <div class="timeline-content">
+                    <span class="date-pill">2024.12 ~ 2025.01</span>
+                    <h3>Techer Bootcamp</h3>
+                    <p class="timeline-role">Backend Developer</p>
+                    <ul>
+                      <li>프로젝트 백엔드 개발을 담당하며 데이터베이스 설계와 API 작성 수행</li>
+                      <li>기존 코드 구조를 점검하고 유지보수성을 높이기 위한 코드 리팩토링 진행</li>
+                      <li>GitHub Actions 기반 CI/CD 워크플로우를 작성해 배포 자동화 환경 구성</li>
+                    </ul>
+                  </div>
+                </article>
+
+                <article class="timeline-item">
+                  <div class="timeline-dot" aria-hidden="true"></div>
+                  <div class="timeline-content">
+                    <span class="date-pill">2021.08 ~ 2025.12</span>
+                    <h3>세종나눔봉사단</h3>
+                    <p class="timeline-role">Volunteer</p>
+                    <ul>
+                      <li>세종나눔봉사단 활동</li>
+                    </ul>
+                  </div>
+                </article>
+              </div>
+            </section>
+
+            <section id="education" class="experience-group" aria-labelledby="education-title">
+              <h3 id="education-title" class="experience-category">Education</h3>
+              <div class="timeline">
+                <article class="timeline-item">
+                  <div class="timeline-dot" aria-hidden="true"></div>
+                  <div class="timeline-content">
+                    <span class="date-pill">2021.03 ~ 2026.08</span>
+                    <h3>세종대학교</h3>
+                    <p class="timeline-role">학사 과정</p>
+                    <ul>
+                      <li>호텔관광대학 호텔관광외식경영학부 호텔관광경영학전공</li>
+                      <li>소프트웨어융합대학 컴퓨터공학과</li>
+                    </ul>
+                  </div>
+                </article>
+              </div>
+            </section>
+
+            <section id="certifications" class="experience-group" aria-labelledby="certifications-title">
+              <h3 id="certifications-title" class="experience-category">Certifications</h3>
+              <div class="timeline">
+                <article class="timeline-item">
+                  <div class="timeline-dot" aria-hidden="true"></div>
+                  <div class="timeline-content">
+                    <span class="date-pill">Certification</span>
+                    <h3>정보처리기사</h3>
+                    <p class="timeline-role">한국산업인력공단</p>
+                  </div>
+                </article>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">© 전해찬 Portfolio</div>
+    </footer>
+    <script>
+      const navLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
+      const sections = navLinks
+        .map((link) => document.querySelector(link.getAttribute('href')))
+        .filter(Boolean);
+
+      const setActive = (id) => {
+        navLinks.forEach((link) => {
+          link.classList.toggle('is-active', link.getAttribute('href') === `#${id}`);
+        });
+      };
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const visible = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+          if (visible) setActive(visible.target.id);
+        },
+        { rootMargin: '-32% 0px -58%', threshold: [0, 0.25, 0.5, 0.75] }
+      );
+
+      sections.forEach((section) => observer.observe(section));
+    </script>
+  </body>
+</html>
