@@ -79,11 +79,28 @@
 
       <section id="projects" class="section projects-section">
         <div class="container">
-          <div class="section-title oversized">
-            <span>Projects</span>
-            <h2>Projects</h2>
-          </div>
+          <h2 class="section-heading">Projects</h2>
           <div class="project-grid">
+
+            <a class="project-card" href="projects/arcane.html">
+              <div class="project-cover">
+                <img src="assets/covers/arcane-cover.png" alt="ARCANE 챔피언 분석 화면">
+              </div>
+              <div class="project-card-head">
+                <h3>ARCANE</h3>
+                <span>2026.01 - 2026.06</span>
+              </div>
+              <p>Riot Games API 기반 LOL 전적 검색, 챔피언 분석, 랭킹 갱신, 공략 게시판과 실시간 채팅을 제공하는 게임 정보 분석 서비스입니다.</p>
+              <ul>
+                <li>단일 서버 구조를 API / Worker / AI Server로 분리</li>
+                <li>Kafka 기반 비동기 작업 처리 구조 도입</li>
+                <li>Elasticsearch 기반 검색 성능 개선</li>
+              </ul>
+              <div class="project-tags">
+                <span>MSA</span><span>Spring</span><span>Kafka</span><span>MongoDB</span><span>MySQL</span><span>Elasticsearch</span>
+              </div>
+            </a>
+
             <a class="project-card primary-project" href="projects/rps.html">
               <div class="project-cover">
                 <img src="assets/covers/rps-cover.png" alt="멀티뷰 기반 RPS 시연 화면">
@@ -103,25 +120,6 @@
               </div>
             </a>
 
-            <a class="project-card" href="projects/arcane.html">
-              <div class="project-cover">
-                <img src="assets/covers/arcane-cover.png" alt="ARCANE 챔피언 분석 화면">
-              </div>
-              <div class="project-card-head">
-                <h3>ARCANE</h3>
-                <span>2026.01 - 2026.06</span>
-              </div>
-              <p>Riot Games API 기반 LOL 전적 검색, 챔피언 분석, 랭킹 갱신, 공략 게시판과 실시간 채팅을 제공하는 게임 정보 분석 서비스입니다.</p>
-              <ul>
-                <li>단일 서버 구조를 API / Worker / AI Server로 분리</li>
-                <li>Kafka 기반 비동기 작업 처리 구조 도입</li>
-                <li>Elasticsearch 기반 검색 성능 개선</li>
-              </ul>
-              <div class="project-tags">
-                <span>Spring</span><span>Kafka</span><span>MongoDB</span><span>Elasticsearch</span>
-              </div>
-            </a>
-
             <a class="project-card muted-project" href="projects/pu.html">
               <div class="project-cover">
                 <img src="assets/covers/convenience-cover.png" alt="편의점 분석 보고서 표지">
@@ -137,7 +135,7 @@
                 <li>상품 배치와 소비 트렌드 반영으로 매출 상승 시나리오 제시</li>
               </ul>
               <div class="project-tags">
-                <span>Data Analysis</span><span>RFM</span><span>Association Rule</span><span>5명</span>
+                <span>Data Analysis</span><span>RFM</span><span>Association Rule</span>
               </div>
             </a>
 
@@ -165,10 +163,7 @@
 
       <section id="skills" class="section">
         <div class="container">
-          <div class="section-title">
-            <span>Skills</span>
-            <h2>기술 스택</h2>
-          </div>
+          <h2 class="section-heading">Skills</h2>
           <div class="skill-table-wrap" aria-label="기술 스택 표">
             <table class="skill-table">
               <thead>
