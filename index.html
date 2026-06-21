@@ -21,6 +21,16 @@
       </nav>
     </header>
 
+    <aside class="index-side-nav" aria-label="Page sections">
+      <a class="is-active" href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#activities">Activities</a>
+      <a href="#education">Education</a>
+      <a href="#certifications">Certifications</a>
+    </aside>
+
     <main>
       <section id="home" class="hero">
         <div class="container">
@@ -458,9 +468,10 @@
       <div class="container">© 전해찬 Portfolio</div>
     </footer>
     <script>
-      const navLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
-      const sections = navLinks
-        .map((link) => document.querySelector(link.getAttribute('href')))
+      const navLinks = [...document.querySelectorAll('.nav-links a[href^="#"], .index-side-nav a[href^="#"]')];
+      const sectionIds = [...new Set(navLinks.map((link) => link.getAttribute('href')))];
+      const sections = sectionIds
+        .map((id) => document.querySelector(id))
         .filter(Boolean);
 
       const setActive = (id) => {
