@@ -2467,6 +2467,9 @@ body {
   top: 72px;
   width: 240px;
   padding: 8px;
+  border-radius: 18px;
+  background: rgba(31, 37, 43, 0.92);
+  backdrop-filter: blur(14px);
 }
 
 .detail-nav a {
@@ -2474,6 +2477,9 @@ body {
   align-items: center;
   width: 100%;
   min-height: 40px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: var(--muted);
   box-sizing: border-box;
 }
 
@@ -2507,12 +2513,15 @@ body {
 }
 
 .index-side-nav a:hover,
-.index-side-nav a.is-active {
+.index-side-nav a.is-active,
+.detail-nav a:hover,
+.detail-nav a.is-active {
   color: var(--blue-dark);
   background: var(--soft-blue);
 }
 
-.index-side-nav a.is-active::before {
+.index-side-nav a.is-active::before,
+.detail-nav a.is-active::before {
   content: "";
   width: 7px;
   height: 7px;
