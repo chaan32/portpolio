@@ -27,20 +27,35 @@
       <section class="page-hero">
         <div class="container">
           <div class="page-hero-card">
-            <p class="eyebrow">Project 05 · 2026.03 - 2026.06</p>
+            <p class="eyebrow">Project 03</p>
             <h1>대규모 설비 이벤트 처리 시스템 : SFEP</h1>
             <p class="lead">
               제조 공장 설비에서 발생하는 대규모 센서 이벤트를 Kafka 기반 비동기 구조로 처리하고,
               PostgreSQL 저장, 위험 이벤트 실시간 알림, Prometheus/Grafana 모니터링까지 구성한 이벤트 처리 시스템입니다.
             </p>
             <div class="detail-actions">
+              <a class="button" href="https://github.com/chaan32/SFEP" target="_blank" rel="noreferrer">GitHub</a>
               <a class="button" href="https://heather-wandflower-205.notion.site/SFEP-386fc75f0f92803a9073c66a951d92f9?pvs=73" target="_blank" rel="noreferrer">Notion</a>
               <a class="button" href="../index.html#projects">목록으로</a>
             </div>
           </div>
         </div>
       </section>
-
+      <section id="overview" class="detail-section">
+        <h2>개요</h2>
+        <p>
+          SFEP(Smart Factory Event Processing System)은 제조 공장 내 설비에서 발생하는 온도, 진동, 전류,
+          RPM, 전력 사용량 등의 센서 이벤트를 수집하고 분석, 저장, 알림까지 처리하는 프로젝트입니다.
+        </p>
+        <p>
+          실제 제조 현장에서는 수백에서 수천 대의 설비가 지속적으로 데이터를 생성하기 때문에 단순 저장보다
+          이상 징후를 운영자가 빠르게 확인하고 대응할 수 있는 실시간 모니터링 구조가 중요하다고 판단했습니다.
+        </p>
+        <p>
+          Direct DB Write, Kafka 도입, Consumer 병렬화, JDBC Batch Insert, Alert Consumer 분리,
+          모니터링 구성까지 단계별로 구조를 확장하며 병목을 찾고 성능을 개선하는 데 초점을 두었습니다.
+        </p>
+      </section>
       <section class="section">
         <div class="container detail-layout">
           <article class="detail-content">
@@ -64,7 +79,13 @@
                   <figcaption>Prometheus / Grafana 모니터링</figcaption>
                 </figure>
               </div>
-              <h3>알림 지연 측정 지표</h3>
+              <h3>설비 이벤트 시뮬레이터</h3>
+              <ul class="bullets">
+                <li>설비 수, 설비당 이벤트 수, 장애 비율 사용자가 직접 원하는 수량의 이벤트 생성</li>
+                <li>지속 부하 테스트 기능을 통해서, 수량이 아닌 시간을 기준으로 이벤트 생성 기능 구현</li>
+              </ul>
+              
+              <h3>위험 이벤트 실시간 알림 UI</h3>
               <ul class="bullets">
                 <li>이벤트 발생 시각, 알림 발행 시각, UI 표시 시각을 각각 기록</li>
                 <li>서버 알림 지연 시간, UI 큐 지연 시간, 전체 표시 지연 시간을 분리 측정</li>
@@ -72,25 +93,13 @@
               </ul>
               <h3>모니터링 지표</h3>
               <ul class="bullets">
-                <li>Server UP, HTTP Requests/sec, HTTP Average Response Time</li>
-                <li>JVM Memory Used, Hikari DB Connection, Process CPU Usage</li>
+                <li>Server UP</li>
+                <li>HTTP Requests/sec</li>
+                <li>HTTP Average Response Time</li>
+                <li>JVM Memory Used</li>
+                <li>Hikari DB Connection</li>
+                <li>Process CPU Usage</li>
               </ul>
-            </section>
-
-            <section id="overview" class="detail-section">
-              <h2>개요</h2>
-              <p>
-                SFEP(Smart Factory Event Processing System)은 제조 공장 내 설비에서 발생하는 온도, 진동, 전류,
-                RPM, 전력 사용량 등의 센서 이벤트를 수집하고 분석, 저장, 알림까지 처리하는 프로젝트입니다.
-              </p>
-              <p>
-                실제 제조 현장에서는 수백에서 수천 대의 설비가 지속적으로 데이터를 생성하기 때문에 단순 저장보다
-                이상 징후를 운영자가 빠르게 확인하고 대응할 수 있는 실시간 모니터링 구조가 중요하다고 판단했습니다.
-              </p>
-              <p>
-                Direct DB Write, Kafka 도입, Consumer 병렬화, JDBC Batch Insert, Alert Consumer 분리,
-                모니터링 구성까지 단계별로 구조를 확장하며 병목을 찾고 성능을 개선하는 데 초점을 두었습니다.
-              </p>
             </section>
 
             <section id="role" class="detail-section">
