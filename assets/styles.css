@@ -2427,7 +2427,7 @@ body {
 .page-hero .container,
 .detail-layout,
 .section > .container.detail-content {
-  width: min(1280px, calc(100% - 64px));
+  width: min(1580px, calc(100% - 64px));
 }
 
 .page-hero-card {
@@ -2444,7 +2444,7 @@ body {
 
 .detail-layout {
   grid-template-columns: minmax(0, 1fr) 240px;
-  gap: 28px;
+  gap: 32px;
 }
 
 .detail-content {
@@ -2465,7 +2465,16 @@ body {
 
 .detail-nav {
   top: 72px;
+  width: 240px;
   padding: 8px;
+}
+
+.detail-nav a {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 40px;
+  box-sizing: border-box;
 }
 
 .media-card img,
@@ -2532,6 +2541,10 @@ body {
   .detail-layout,
   .section > .container.detail-content {
     width: min(100% - 32px, 720px);
+  }
+
+  .detail-nav {
+    width: 100%;
   }
 }
 

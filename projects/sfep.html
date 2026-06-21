@@ -41,24 +41,25 @@
           </div>
         </div>
       </section>
-      <section id="overview" class="detail-section">
-        <h2>개요</h2>
-        <p>
-          SFEP(Smart Factory Event Processing System)은 제조 공장 내 설비에서 발생하는 온도, 진동, 전류,
-          RPM, 전력 사용량 등의 센서 이벤트를 수집하고 분석, 저장, 알림까지 처리하는 프로젝트입니다.
-        </p>
-        <p>
-          실제 제조 현장에서는 수백에서 수천 대의 설비가 지속적으로 데이터를 생성하기 때문에 단순 저장보다
-          이상 징후를 운영자가 빠르게 확인하고 대응할 수 있는 실시간 모니터링 구조가 중요하다고 판단했습니다.
-        </p>
-        <p>
-          Direct DB Write, Kafka 도입, Consumer 병렬화, JDBC Batch Insert, Alert Consumer 분리,
-          모니터링 구성까지 단계별로 구조를 확장하며 병목을 찾고 성능을 개선하는 데 초점을 두었습니다.
-        </p>
-      </section>
       <section class="section">
         <div class="container detail-layout">
           <article class="detail-content">
+            <section id="overview" class="detail-section">
+              <h2>개요</h2>
+              <p>
+                SFEP(Smart Factory Event Processing System)은 제조 공장 내 설비에서 발생하는 온도, 진동, 전류,
+                RPM, 전력 사용량 등의 센서 이벤트를 수집하고 분석, 저장, 알림까지 처리하는 프로젝트입니다.
+              </p>
+              <p>
+                실제 제조 현장에서는 수백에서 수천 대의 설비가 지속적으로 데이터를 생성하기 때문에 단순 저장보다
+                이상 징후를 운영자가 빠르게 확인하고 대응할 수 있는 실시간 모니터링 구조가 중요하다고 판단했습니다.
+              </p>
+              <p>
+                Direct DB Write, Kafka 도입, Consumer 병렬화, JDBC Batch Insert, Alert Consumer 분리,
+                모니터링 구성까지 단계별로 구조를 확장하며 병목을 찾고 성능을 개선하는 데 초점을 두었습니다.
+              </p>
+            </section>
+
             <section id="demo" class="detail-section">
               <h2>프로젝트 시연</h2>
               <div class="media-grid">
@@ -380,8 +381,8 @@
           </article>
 
           <aside class="detail-nav" aria-label="SFEP detail navigation">
-            <a href="#demo">시연</a>
             <a href="#overview">개요</a>
+            <a href="#demo">시연</a>
             <a href="#role">역할</a>
             <a href="#architecture">아키텍처</a>
             <a href="#stack">기술 스택</a>
