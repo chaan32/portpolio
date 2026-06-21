@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SFEP</title>
+    <meta name="description" content="대규모 설비 이벤트 처리 시스템 SFEP 프로젝트">
+    <link rel="stylesheet" href="../assets/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark">H</span>
+          <span>전해찬</span>
+        </a>
+        <div class="nav-links">
+          <a href="../index.html#projects">Projects</a>
+          <a href="../index.html#skills">Skills</a>
+          <a href="../index.html#activities">Activities</a>
+          <a href="../index.html#education">Education</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="container">
+          <div class="page-hero-card">
+            <p class="eyebrow">Project 05 · 2026.03 - 2026.06</p>
+            <h1>대규모 설비 이벤트 처리 시스템 : SFEP</h1>
+            <p class="lead">
+              제조 공장 설비에서 발생하는 대규모 센서 이벤트를 Kafka 기반 비동기 구조로 처리하고,
+              PostgreSQL 저장, 위험 이벤트 실시간 알림, Prometheus/Grafana 모니터링까지 구성한 이벤트 처리 시스템입니다.
+            </p>
+            <div class="detail-actions">
+              <a class="button" href="https://heather-wandflower-205.notion.site/SFEP-386fc75f0f92803a9073c66a951d92f9?pvs=73" target="_blank" rel="noreferrer">Notion</a>
+              <a class="button" href="../index.html#projects">목록으로</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container detail-layout">
+          <article class="detail-content">
+            <section id="demo" class="detail-section">
+              <h2>프로젝트 시연</h2>
+              <div class="media-grid">
+                <figure class="media-card">
+                  <img src="../assets/notion/sfep/simulator.gif" alt="SFEP 설비 이벤트 시뮬레이터 GIF">
+                  <figcaption>설비 이벤트 시뮬레이터</figcaption>
+                </figure>
+                <figure class="media-card">
+                  <img src="../assets/notion/sfep/load-test.gif" alt="SFEP 지속 부하 테스트 GIF">
+                  <figcaption>지속 부하 테스트</figcaption>
+                </figure>
+                <figure class="media-card">
+                  <img src="../assets/notion/sfep/alert-ui.gif" alt="SFEP 위험 이벤트 실시간 알림 UI GIF">
+                  <figcaption>위험 이벤트 실시간 알림 UI</figcaption>
+                </figure>
+                <figure class="media-card">
+                  <img src="../assets/notion/sfep/monitoring.png" alt="SFEP Prometheus Grafana 모니터링 화면">
+                  <figcaption>Prometheus / Grafana 모니터링</figcaption>
+                </figure>
+              </div>
+            </section>
+
+            <section id="overview" class="detail-section">
+              <h2>개요</h2>
+              <p>
+                SFEP(Smart Factory Event Processing System)은 제조 공장 내 설비에서 발생하는 온도, 진동, 전류,
+                RPM, 전력 사용량 등의 센서 이벤트를 수집하고 분석, 저장, 알림까지 처리하는 프로젝트입니다.
+              </p>
+              <p>
+                실제 제조 현장에서는 수백에서 수천 대의 설비가 지속적으로 데이터를 생성하기 때문에 단순 저장보다
+                이상 징후를 운영자가 빠르게 확인하고 대응할 수 있는 실시간 모니터링 구조가 중요하다고 판단했습니다.
+              </p>
+              <p>
+                Direct DB Write, Kafka 도입, Consumer 병렬화, JDBC Batch Insert, Alert Consumer 분리,
+                모니터링 구성까지 단계별로 구조를 확장하며 병목을 찾고 성능을 개선하는 데 초점을 두었습니다.
+              </p>
+            </section>
+
+            <section id="role" class="detail-section">
+              <h2>역할</h2>
+              <ul class="bullets">
+                <li>Spring Boot 기반 백엔드 아키텍처 설계</li>
+                <li>가상 설비 이벤트 생성 로직과 Swing 기반 시뮬레이션 UI 구현</li>
+                <li>Direct DB Write 저장 구조 구현 및 한계 측정</li>
+                <li>Kafka Producer/Consumer 기반 비동기 이벤트 처리 구조 설계</li>
+                <li>Consumer Group 분리를 통한 저장 처리와 알림 처리 분리</li>
+                <li>JDBC Batch Insert 기반 대량 저장 성능 개선</li>
+                <li>Hikari Connection Pool, Consumer Concurrency, Kafka Poll 설정 튜닝</li>
+                <li>위험 이벤트 판단 로직과 실시간 알림 UI 구현</li>
+                <li>Prometheus / Grafana 기반 모니터링 환경 구성</li>
+                <li>단계별 성능 측정 및 병목 분석 문서화</li>
+              </ul>
+            </section>
+
+            <section id="architecture" class="detail-section">
+              <h2>시스템 아키텍처</h2>
+              <div class="media-grid">
+                <figure class="media-card wide-media">
+                  <img src="../assets/notion/sfep/architecture.png" alt="SFEP 시스템 아키텍처">
+                  <figcaption>시스템 아키텍처</figcaption>
+                </figure>
+                <figure class="media-card wide-media">
+                  <img src="../assets/notion/sfep/system-flow.png" alt="SFEP 시스템 플로우">
+                  <figcaption>시스템 플로우</figcaption>
+                </figure>
+              </div>
+            </section>
+
+            <section id="stack" class="detail-section">
+              <h2>기술 스택</h2>
+              <table class="data-table">
+                <thead>
+                  <tr><th>Category</th><th>Stacks</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Backend</td><td>Spring Boot, Spring Web, Spring Kafka, Spring JDBC Batch, Spring Actuator</td></tr>
+                  <tr><td>Messaging</td><td>Apache Kafka, Consumer Group, Kafka Partition, SSE, Swing Event Bus</td></tr>
+                  <tr><td>Database</td><td>PostgreSQL</td></tr>
+                  <tr><td>Monitoring</td><td>Prometheus, Grafana, Micrometer</td></tr>
+                  <tr><td>Infra / Tools</td><td>Docker Compose, Git</td></tr>
+                </tbody>
+              </table>
+            </section>
+
+            <section id="improvements" class="detail-section">
+              <h2>개선 사항</h2>
+              <div class="improvement-list">
+                <article class="improvement-card">
+                  <div class="improvement-head">
+                    <h3 class="improvement-title">Direct DB Write 구조의 대량 이벤트 저장 한계</h3>
+                    <span class="improvement-kicker">상황 1</span>
+                  </div>
+                  <div class="improvement-grid">
+                    <div class="improvement-panel">
+                      <span class="improvement-label">AS-IS</span>
+                      <p>
+                        초기 구조에서는 시뮬레이터가 생성한 이벤트를 Spring 서버가 PostgreSQL에 직접 저장했습니다.
+                        구현은 단순했지만 대량 이벤트가 한 번에 들어오면 요청 처리와 DB 저장이 강하게 결합되어 병목이 발생했습니다.
+                      </p>
+                    </div>
+                    <div class="improvement-panel to-be">
+                      <span class="improvement-label">TO-BE</span>
+                      <p>
+                        JDBC Batch Insert를 적용해 여러 이벤트를 묶어서 DB에 전달하도록 개선했습니다.
+                        JPA 엔티티 상태 관리 비용과 DB 왕복 횟수를 줄여 대량 Insert 처리량을 높였습니다.
+                      </p>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="improvement-card">
+                  <div class="improvement-head">
+                    <h3 class="improvement-title">이벤트 수집과 저장이 결합된 구조</h3>
+                    <span class="improvement-kicker">상황 2</span>
+                  </div>
+                  <div class="improvement-grid">
+                    <div class="improvement-panel">
+                      <span class="improvement-label">AS-IS</span>
+                      <p>
+                        Direct DB Write 방식에서는 DB 저장이 느려질 경우 이벤트 수집 요청 자체도 함께 지연되는 구조였습니다.
+                        순간적으로 이벤트가 몰리는 상황에서 저장 처리 흐름이 전체 수집 흐름을 막을 수 있었습니다.
+                      </p>
+                    </div>
+                    <div class="improvement-panel to-be">
+                      <span class="improvement-label">TO-BE</span>
+                      <p>
+                        서버는 이벤트를 Kafka Topic에 먼저 발행하고, Consumer가 메시지를 비동기적으로 소비해 DB 저장을 담당하도록 분리했습니다.
+                        Kafka가 중간 버퍼 역할을 하면서 수집 흐름과 저장 흐름을 안정적으로 분리할 수 있었습니다.
+                      </p>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </section>
+          </article>
+
+          <aside class="detail-nav" aria-label="SFEP detail navigation">
+            <a href="#demo">시연</a>
+            <a href="#overview">개요</a>
+            <a href="#role">역할</a>
+            <a href="#architecture">아키텍처</a>
+            <a href="#stack">기술 스택</a>
+            <a href="#improvements">개선</a>
+          </aside>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
