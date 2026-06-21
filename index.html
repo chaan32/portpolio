@@ -130,9 +130,9 @@
               </div>
               <p>제조 공장 설비에서 발생하는 대규모 센서 이벤트를 Kafka 기반 비동기 구조로 처리하고, PostgreSQL 저장, 위험 알림, Prometheus/Grafana 모니터링까지 구성한 이벤트 처리 시스템입니다.</p>
               <ul>
-                <li>Direct DB Write에서 Kafka, Consumer 병렬화, Batch Insert 구조로 개선</li>
-                <li>Consumer Group 분리로 저장 처리와 위험 이벤트 알림 흐름 분리</li>
-                <li>Swing 시뮬레이터와 실시간 알림 UI로 이벤트 처리 흐름 검증</li>
+                <li>JDBC Batch Insert로 100,000건 처리 시간 53,611ms에서 1,849ms로 개선</li>
+                <li>Kafka Consumer 병렬화 후 최대 50,000 events/sec 처리 확인</li>
+                <li>Alert Consumer 분리로 p95 알림 지연 6,959ms에서 1,926ms로 개선</li>
               </ul>
               <div class="project-tags">
                 <span>Spring Boot</span><span>Kafka</span><span>PostgreSQL</span><span>Grafana</span>
