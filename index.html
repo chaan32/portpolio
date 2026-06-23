@@ -138,14 +138,14 @@
                 <h3>SFEP</h3>
                 <span>2026.06 - 2026.06</span>
               </div>
-              <p>제조 공장 설비에서 발생하는 대규모 센서 이벤트를 Kafka 기반 비동기 구조로 처리하고, PostgreSQL 저장, 위험 알림, Prometheus/Grafana 모니터링까지 구성한 이벤트 처리 시스템입니다.</p>
+              <p>제조 설비 이벤트를 Kafka 비동기 구조로 처리하고, AI4I 기반 고장 예측 모델을 ONNX로 변환해 Spring 서버에서 실시간 추론과 위험 알림까지 구성한 시스템입니다.</p>
               <ul>
-                <li>JDBC Batch Insert로 100,000건 처리 시간 53,611ms에서 1,849ms로 개선</li>
+                <li>Batch Insert로 100,000건 처리 시간 53,611ms에서 1,849ms로 개선</li>
                 <li>Kafka Consumer 병렬화 후 최대 50,000 events/sec 처리 확인</li>
-                <li>Alert Consumer 분리로 p95 알림 지연 6,959ms에서 1,926ms로 개선</li>
+                <li>ONNX 기반 고장 예측 모델 F1-score 0.8889, ROC-AUC 0.9740 달성</li>
               </ul>
               <div class="project-tags">
-                <span>Spring Boot</span><span>Kafka</span><span>PostgreSQL</span><span>Grafana</span>
+                <span>Spring Boot</span><span>Kafka</span><span>ONNX</span><span>Grafana</span>
               </div>
             </a>
 
