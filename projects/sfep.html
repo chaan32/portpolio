@@ -48,14 +48,14 @@
               <h2>개요</h2>
               <p>
                 SFEP(Smart Factory Event Processing System)는 제조 설비에서 발생하는 대규모 센서 이벤트를
-                수집, 저장, 분석하고 AI 기반으로 고장 위험도를 예측하는 이벤트 처리 시스템입니다.
+                수집, 저장, 분석하고 <span class="text-highlight">AI 기반으로 고장 위험도를 예측</span>하는 이벤트 처리 시스템입니다.
               </p>
               <p>
                 단순 CRUD 서비스가 아니라, 설비 수와 이벤트 발생량이 증가했을 때 발생하는 DB 병목,
-                Consumer 처리 지연, 알림 지연 문제를 단계적으로 개선하며 확장 가능한 백엔드 구조를 검증했습니다.
+                Consumer 처리 지연, 알림 지연 문제를 단계적으로 개선하며 <span class="text-highlight">확장 가능한 백엔드 구조를 검증</span>했습니다.
               </p>
               <p>
-                AI4I 제조 설비 데이터를 기반으로 고장 예측 모델을 학습하고, ONNX로 변환해 Spring 서버에서
+                <span class="text-highlight">AI4I 제조 설비 데이터를 기반으로 고장 예측 모델을 학습</span>하고, ONNX로 변환해 Spring 서버에서
                 직접 추론하도록 구성했습니다.
               </p>
             </section>
@@ -92,9 +92,9 @@
               </ul>
               <h3>AI 기반 고장 위험 예측 기반 실시간 위험 설비 알림</h3>
               <ul class="bullets">
-                <li>AI4I 제조 설비 데이터 기반 고장 예측 모델 학습</li>
-                <li>설비별 최근 50개 이벤트를 Rolling Window로 묶고 평균, 최대, 최소, 표준편차, 추세 등 52개 Feature 생성</li>
-                <li>ONNX 모델로 고장 확률을 예측하고 설비별 위험 상태를 Normal, Warning, Critical로 표시</li>
+                <li><span class="text-highlight">AI4I 제조 설비 데이터 기반 고장 예측 모델 학습</span></li>
+                <li>설비별 최근 50개 이벤트를 Rolling Window로 묶고 평균, 최대, 최소, 표준편차, 추세 등 <span class="text-highlight">52개 Feature 생성</span></li>
+                <li><span class="text-highlight">ONNX 모델로 고장 확률을 예측</span>하고 설비별 위험 상태를 Normal, Warning, Critical로 표시</li>
                 <li>별도 Swing Frame에서 실시간 위험 설비 상태와 서버 지연 시간 지표 확인</li>
               </ul>
               <h3>모니터링 지표</h3>
@@ -111,12 +111,12 @@
             <section id="results" class="detail-section">
               <h2>핵심 성과</h2>
               <ul class="bullets">
-                <li>100,000건 이벤트 처리 시간 53,611ms에서 1,849ms로 개선</li>
-                <li>저장 처리율 933 events/sec에서 27,056 events/sec로 개선</li>
-                <li>Kafka Consumer 병렬화 후 최대 50,000 events/sec 처리 확인</li>
-                <li>Alert Consumer 분리 후 p95 알림 지연 6,959ms에서 1,926ms로 개선</li>
+                <li><span class="text-highlight">100,000건 이벤트 처리 시간 53,611ms에서 1,849ms로 개선</span></li>
+                <li>저장 처리율 <span class="text-highlight">933 events/sec에서 27,056 events/sec로 개선</span></li>
+                <li>Kafka Consumer 병렬화 후 <span class="text-highlight">최대 50,000 events/sec 처리</span> 확인</li>
+                <li>Alert Consumer 분리 후 <span class="text-highlight">p95 알림 지연 6,959ms에서 1,926ms로 개선</span></li>
                 <li>AI 기반 고장 예측 모델 Spring 서버 연동</li>
-                <li>고장 예측 모델 F1-score 0.8889, ROC-AUC 0.9740 달성</li>
+                <li>고장 예측 모델 <span class="text-highlight">F1-score 0.8889, ROC-AUC 0.9740</span> 달성</li>
                 <li>Prometheus/Grafana 기반 모니터링으로 성능 개선 실험의 병목 분석 가능</li>
               </ul>
             </section>
@@ -127,12 +127,12 @@
                 <li>Spring Boot 기반 백엔드 아키텍처 설계</li>
                 <li>대규모 이벤트 생성 시뮬레이터 구현</li>
                 <li>Kafka Producer/Consumer 기반 비동기 이벤트 처리 구조 설계</li>
-                <li>Consumer Group 병렬 처리 및 Batch Insert 성능 개선</li>
+                <li><span class="text-highlight">Consumer Group 병렬 처리 및 Batch Insert 성능 개선</span></li>
                 <li>알림 Consumer 분리를 통한 실시간 알림 지연 개선</li>
                 <li>JDBC Batch Insert 기반 대량 저장 성능 개선</li>
                 <li>Hikari Connection Pool, Consumer Concurrency, Kafka Poll 설정 튜닝</li>
                 <li>AI4I 데이터 기반 고장 예측 모델 학습</li>
-                <li>ONNX 모델을 Spring 서버에 연동해 실시간 추론 구현</li>
+                <li><span class="text-highlight">ONNX 모델을 Spring 서버에 연동해 실시간 추론 구현</span></li>
                 <li>Swing 기반 실시간 모니터링 및 위험 설비 시각화 UI 구현</li>
                 <li>Prometheus/Grafana 기반 운영 지표 확인 구조 구성</li>
               </ul>
@@ -183,17 +183,17 @@
                       <p>
                         초기 구조에서는 시뮬레이터가 생성한 이벤트를 Spring 서버가 PostgreSQL에 직접 저장했습니다.
                         구현은 단순했지만 대량 이벤트가 한 번에 들어오면 요청 처리와 DB 저장이 강하게 결합되고,
-                        이벤트 수가 증가할수록 Insert 횟수, Connection Pool 사용량, 트랜잭션 처리 시간이 병목이 되었습니다.
+                        이벤트 수가 증가할수록 Insert 횟수, Connection Pool 사용량, <span class="text-highlight">트랜잭션 처리 시간이 병목</span>이 되었습니다.
                       </p>
-                      <p>100,000건 이벤트 처리 기준 Direct DB Write 방식은 53,611ms가 소요되었고, 처리율은 933 events/sec 수준이었습니다.</p>
+                      <p>100,000건 이벤트 처리 기준 Direct DB Write 방식은 <span class="text-highlight">53,611ms가 소요</span>되었고, 처리율은 933 events/sec 수준이었습니다.</p>
                     </div>
                     <div class="improvement-panel to-be">
                       <span class="improvement-label">TO-BE</span>
                       <p>
-                        Kafka를 도입해 이벤트 수집과 저장 흐름을 분리하고, Consumer가 이벤트를 비동기적으로 처리하도록 변경했습니다.
+                        <span class="text-highlight">Kafka를 도입해 이벤트 수집과 저장 흐름을 분리</span>하고, Consumer가 이벤트를 비동기적으로 처리하도록 변경했습니다.
                         이후 Batch Insert를 적용해 1건씩 저장하던 구조를 여러 이벤트 단위로 묶어 저장하도록 개선했습니다.
                       </p>
-                      <p>100,000건 이벤트 처리 시간을 96.5% 줄였고, 저장 처리율은 기존 대비 약 2,800% 향상했습니다.</p>
+                      <p>100,000건 이벤트 처리 시간을 <span class="text-highlight">96.5% 줄였고</span>, 저장 처리율은 기존 대비 <span class="text-highlight">약 2,800% 향상</span>했습니다.</p>
                     </div>
                   </div>
                   <table class="data-table">
@@ -223,12 +223,12 @@
                     <div class="improvement-panel to-be">
                       <span class="improvement-label">TO-BE</span>
                       <p>
-                        Kafka Topic Partition을 6개로 두고 Consumer Concurrency를 3으로 조정해 병렬 처리 구조를 적용했습니다.
+                        Kafka Topic Partition을 6개로 두고 <span class="text-highlight">Consumer Concurrency를 3으로 조정해 병렬 처리 구조</span>를 적용했습니다.
                         이후 max.poll.records, Batch Size, Hikari Connection Pool 설정을 조합해 대량 이벤트 처리 실험을 반복했습니다.
                       </p>
                     </div>
                   </div>
-                  <div class="note-panel">Kafka Consumer 병렬화 후 최대 50,000 events/sec 수준의 처리량을 확인했습니다.</div>
+                  <div class="note-panel">Kafka Consumer 병렬화 후 <span class="text-highlight">최대 50,000 events/sec 수준의 처리량</span>을 확인했습니다.</div>
                 </article>
 
                 <article class="improvement-card">
@@ -247,7 +247,7 @@
                     <div class="improvement-panel to-be">
                       <span class="improvement-label">TO-BE</span>
                       <p>
-                        Kafka Consumer Group을 저장 Consumer와 알림 Consumer로 분리했습니다.
+                        <span class="text-highlight">Kafka Consumer Group을 저장 Consumer와 알림 Consumer로 분리</span>했습니다.
                         같은 센서 이벤트를 각각 독립적으로 소비하도록 구성하고, 알림 전달은 AlertEventBus와 별도 Thread Pool을 통해 비동기로 처리했습니다.
                       </p>
                     </div>
@@ -261,7 +261,7 @@
                       <tr><td>Alert Consumer 분리 후</td><td>1,926ms</td></tr>
                     </tbody>
                   </table>
-                  <div class="note-panel">Alert Consumer 분리 후 p95 알림 지연 시간을 72% 단축했습니다.</div>
+                  <div class="note-panel">Alert Consumer 분리 후 <span class="text-highlight">p95 알림 지연 시간을 72% 단축</span>했습니다.</div>
                 </article>
 
                 <article class="improvement-card">
@@ -280,9 +280,9 @@
                     <div class="improvement-panel to-be">
                       <span class="improvement-label">TO-BE</span>
                       <p>
-                        AI4I 2020 Predictive Maintenance Dataset을 활용해 고장 예측 모델을 학습했습니다.
-                        설비별 최근 50개 이벤트를 Rolling Window로 관리하고 52개 Feature를 생성해 모델에 입력했습니다.
-                        Spring 서버에서는 ONNX Runtime으로 모델을 직접 로드하고 실시간으로 failure_probability를 계산하도록 구현했습니다.
+                        <span class="text-highlight">AI4I 2020 Predictive Maintenance Dataset</span>을 활용해 고장 예측 모델을 학습했습니다.
+                        설비별 최근 50개 이벤트를 Rolling Window로 관리하고 <span class="text-highlight">52개 Feature</span>를 생성해 모델에 입력했습니다.
+                        Spring 서버에서는 <span class="text-highlight">ONNX Runtime으로 모델을 직접 로드</span>하고 실시간으로 failure_probability를 계산하도록 구현했습니다.
                       </p>
                     </div>
                   </div>
@@ -317,7 +317,7 @@
                     <div class="improvement-panel to-be">
                       <span class="improvement-label">TO-BE</span>
                       <p>
-                        Spring Actuator, Prometheus, Grafana를 도입해 서버 운영 지표를 수집하고 시각화했습니다.
+                        <span class="text-highlight">Spring Actuator, Prometheus, Grafana를 도입</span>해 서버 운영 지표를 수집하고 시각화했습니다.
                         Spring Boot는 /actuator/prometheus 엔드포인트로 JVM, HTTP 요청, DB Connection, CPU 사용량 등의 메트릭을 노출하고,
                         Grafana에서 대량 이벤트 처리 실험 중 서버 자원 사용량까지 함께 확인했습니다.
                       </p>
@@ -330,11 +330,11 @@
             <section id="retrospective" class="detail-section">
               <h2>결과 및 소감</h2>
               <p>
-                이 프로젝트를 통해 단순히 기능을 구현하는 것보다 병목을 수치로 확인하고 구조적으로 개선하는 과정이 중요하다는 점을 배웠습니다.
+                이 프로젝트를 통해 단순히 기능을 구현하는 것보다 <span class="text-highlight">병목을 수치로 확인하고 구조적으로 개선하는 과정</span>이 중요하다는 점을 배웠습니다.
                 초기 Direct DB Write 구조는 구현은 단순했지만 100,000건 이벤트 처리 시 약 53초가 소요되어 대규모 이벤트 처리에는 적합하지 않았습니다.
               </p>
               <p>
-                이후 Kafka를 도입해 수집과 저장을 분리하고, Consumer 병렬화와 JDBC Batch Insert를 적용하면서 처리량을 단계적으로 개선할 수 있었습니다.
+                이후 Kafka를 도입해 수집과 저장을 분리하고, <span class="text-highlight">Consumer 병렬화와 JDBC Batch Insert</span>를 적용하면서 처리량을 단계적으로 개선할 수 있었습니다.
                 또한 저장 처리율만 보는 것이 아니라 위험 이벤트가 운영자에게 도착하기까지의 알림 지연 시간을 측정하면서,
                 실시간 시스템에서는 저장 성능과 알림 실시간성을 분리해서 바라봐야 한다는 점을 체감했습니다.
               </p>
