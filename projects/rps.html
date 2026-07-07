@@ -7,7 +7,7 @@
     <meta name="description" content="멀티뷰 기반 RPS 프로젝트" />
     <link
       rel="stylesheet"
-      href="../assets/styles.css?v=20260707-rps-retrospective"
+      href="../assets/styles.css?v=20260707-rps-improvement-formula"
     />
   </head>
   <body>
@@ -565,10 +565,12 @@
                       </tr>
                     </tbody>
                   </table>
-                  <div class="note-panel">
-                    FPS 향상률 = (새 FPS - 직전 FPS) / 직전 FPS<br />frame time
-                    감소율 = (직전 처리시간 - 새 처리시간) / 직전 처리시간
-                  </div>
+                  <p class="metric-footnote">
+                    * FPS 향상률 = ((신규 FPS - 직전 FPS) / 직전 FPS) &times;
+                    100<br />
+                    * Frame time 감소율 = ((직전 처리시간 - 신규 처리시간) /
+                    직전 처리시간) &times; 100
+                  </p>
                 </article>
 
                 <article class="improvement-card">
@@ -611,28 +613,15 @@
                   </div>
                   <p>
                     Background Job 분리로 장시간 리포트 생성 작업이
-                    사용자-facing API를 막지 않도록 개선하고, 목록 응답 크기를
-                    <span class="text-highlight">약 99.25% 감소</span>
-                    시켰습니다.
+                    사용자-facing API를 막지 않도록 개선했습니다. 또한 목록
+                    화면에서는 전체 HTML contents를 반환하지 않고 필요한
+                    메타데이터만 조회하도록 분리하여, 리포트 목록 응답 크기를
+                    <span class="text-highlight"
+                      >97,761 bytes에서 729 bytes</span
+                    >로 줄이고
+                    <span class="text-highlight">약 99.25% 감소</span>를
+                    확인했습니다.
                   </p>
-                  <table class="data-table">
-                    <thead>
-                      <tr>
-                        <th>내용</th>
-                        <th>개선 전</th>
-                        <th>개선 후</th>
-                        <th>개선 효과</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>리포트 목록 응답 크기</td>
-                        <td>97,761 bytes</td>
-                        <td>729 bytes</td>
-                        <td>약 99.25% 감소</td>
-                      </tr>
-                    </tbody>
-                  </table>
                 </article>
 
                 <article class="improvement-card">

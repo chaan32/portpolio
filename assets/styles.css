@@ -1526,6 +1526,11 @@ code {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.rps-detail .architecture-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
 .sfep-detail .architecture-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
@@ -1570,6 +1575,11 @@ code {
 
 .arcane-detail .architecture-grid .wide-media img {
   aspect-ratio: 16 / 8.6;
+}
+
+.rps-detail .architecture-grid .wide-media img {
+  aspect-ratio: 1 / 1.12;
+  object-fit: contain;
 }
 
 .sfep-detail .architecture-grid .wide-media img {
@@ -2005,6 +2015,22 @@ code {
   vertical-align: 0.08em;
 }
 
+.improvement-card > p.metric-footnote {
+  margin-top: 8px;
+  padding: 0 2px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #667085;
+  font-size: 13.5px;
+  line-height: 1.45;
+  font-weight: 750;
+}
+
+.improvement-card > p.metric-footnote::before {
+  content: none;
+}
+
 .pdf-viewer {
   overflow: hidden;
   height: min(78vh, 760px);
@@ -2122,6 +2148,10 @@ body.is-lightbox-open {
 
   .architecture-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .rps-detail .architecture-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .sfep-detail .architecture-grid {
@@ -2251,6 +2281,7 @@ body.is-lightbox-open {
   .rps-detail .overview-role-grid,
   .sfep-detail .overview-role-grid,
   .arcane-detail .architecture-grid,
+  .rps-detail .architecture-grid,
   .sfep-detail .architecture-grid,
   .model-card-grid,
   .role-impact-list {
