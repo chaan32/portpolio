@@ -64,3 +64,75 @@
   window.addEventListener("load", updateActive);
   updateActive();
 })();
+
+(() => {
+  const imageTargets = [
+    ...document.querySelectorAll(".media-card img, .profile-card img"),
+  ];
+
+  if (imageTargets.length === 0) return;
+
+  const lightbox = document.createElement("div");
+  lightbox.className = "image-lightbox";
+  lightbox.setAttribute("role", "dialog");
+  lightbox.setAttribute("aria-modal", "true");
+  lightbox.setAttribute("aria-label", "이미지 크게 보기");
+  lightbox.hidden = true;
+  lightbox.innerHTML = `
+    <button class="image-lightbox-close" type="button" aria-label="닫기">×</button>
+    <figure class="image-lightbox-frame">
+      <img alt="" />
+      <figcaption></figcaption>
+    </figure>
+  `;
+  document.body.append(lightbox);
+
+  const lightboxImage = lightbox.querySelector("img");
+  const lightboxCaption = lightbox.querySelector("figcaption");
+  const closeButton = lightbox.querySelector(".image-lightbox-close");
+
+  const getCaption = (image) => {
+    const mediaCaption = image.closest(".media-card")?.querySelector("figcaption");
+    return mediaCaption?.textContent.trim() || image.alt || "";
+  };
+
+  const openLightbox = (image) => {
+    lightboxImage.src = image.currentSrc || image.src;
+    lightboxImage.alt = image.alt || "";
+
+    const caption = getCaption(image);
+    lightboxCaption.textContent = caption;
+    lightboxCaption.hidden = caption.length === 0;
+
+    lightbox.hidden = false;
+    document.body.classList.add("is-lightbox-open");
+    closeButton.focus();
+  };
+
+  const closeLightbox = () => {
+    lightbox.hidden = true;
+    lightboxImage.removeAttribute("src");
+    document.body.classList.remove("is-lightbox-open");
+  };
+
+  imageTargets.forEach((image) => {
+    image.classList.add("is-zoomable-image");
+    image.tabIndex = 0;
+
+    image.addEventListener("click", () => openLightbox(image));
+    image.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      openLightbox(image);
+    });
+  });
+
+  closeButton.addEventListener("click", closeLightbox);
+  lightbox.addEventListener("click", (event) => {
+    if (event.target === lightbox) closeLightbox();
+  });
+
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !lightbox.hidden) closeLightbox();
+  });
+})();

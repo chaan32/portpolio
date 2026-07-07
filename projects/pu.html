@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>편의점 분석</title>
     <meta name="description" content="CU 왕십리점 구매 패턴 및 매출 증대 방안 분석 프로젝트">
-    <link rel="stylesheet" href="../assets/styles.css">
+    <link rel="stylesheet" href="../assets/styles.css?v=20260707-balanced-improvements">
   </head>
   <body>
     <header class="site-header">
@@ -45,43 +45,138 @@
       <section class="section">
         <div class="container detail-layout">
           <article class="detail-content">
-            <section id="summary" class="detail-section">
-              <h2>프로젝트 요약</h2>
-              <p>
-                편의점 시장 성장률 둔화와 CU 왕십리점의 매출 성장률 저하를 배경으로,
-                2024.01.01부터 2025.12.27까지의 고객·판매·상품·날씨 데이터를 수집하고 정제했습니다.
-                최종 분석 데이터는 <span class="text-highlight">판매 데이터 497,610건</span>을 중심으로 고객 1,098명, 상품 4,308건, 날씨 731건을 결합해 구성했습니다.
-              </p>
-              <ul class="bullets">
-                <li>고객 분석: 성별·연령별 객단가 차이가 크지 않아 <span class="text-highlight">방문 빈도 중심의 고객 관리</span>가 필요하다고 판단</li>
-                <li>상품 분석: 시간대, 요일, 성별, 연령대별 인기 상품 차이를 확인하고 <span class="text-highlight">상품 구비·배치 개선 기회</span>를 도출</li>
-                <li>트렌드 분석: PB 상품, 계절·날씨, 이벤트 상품 대응이 부족해 <span class="text-highlight">매출 상승 여지</span>가 있다고 분석</li>
-                <li>개선안: <span class="text-highlight">RFM 기반 회원등급 개편, 연관분석 기반 상품 재배치, PB·이벤트·날씨 경영 강화 전략</span> 제안</li>
-              </ul>
+            <div class="overview-role-grid">
+              <section id="overview" class="detail-section">
+                <h2>개요</h2>
+                <p>
+                  편의점 시장 성장률 둔화와 CU 왕십리점의 매출 성장률 저하를 배경으로,
+                  고객·판매·상품·날씨 데이터를 결합해 구매 패턴과 매출 정체 요인을 분석한 프로젝트입니다.
+                </p>
+                <p>
+                  최종 분석 데이터는 <span class="text-highlight">판매 데이터 497,610건</span>을 중심으로 고객 1,098명, 상품 4,308건, 날씨 731건을 결합해 구성했습니다.
+                </p>
+              </section>
+
+              <section id="role" class="detail-section">
+                <h2>분석 범위</h2>
+                <ul class="bullets">
+                  <li>2024.01.01부터 2025.12.27까지의 판매·고객·상품·날씨 데이터 정제</li>
+                  <li>고객 성별·연령·방문 빈도·구매 금액 기반 고객 행동 분석</li>
+                  <li>시간대, 요일, 성별, 연령대별 인기 상품 차이 분석</li>
+                  <li>RFM 기반 회원등급 개편안 도출</li>
+                  <li>연관분석 기반 상품 재배치 전략 제안</li>
+                  <li>PB·이벤트·날씨 경영 강화 전략 제안</li>
+                </ul>
+              </section>
+            </div>
+
+            <section id="demo" class="detail-section">
+              <h2>프로젝트 기능 및 시연</h2>
+              <div class="media-grid feature-demo-grid">
+                <figure class="media-card">
+                  <figcaption>분석 보고서</figcaption>
+                  <img src="../assets/covers/convenience-cover.png" alt="편의점 분석 보고서 표지">
+                  <p class="media-card-desc">
+                    고객, 판매, 상품, 날씨 데이터를 통합해 CU 왕십리점의 매출 증대 방안을 발표 자료 형태로 정리했습니다.
+                  </p>
+                </figure>
+                <figure class="media-card no-media">
+                  <figcaption>고객 분석</figcaption>
+                  <p class="media-card-desc">
+                    성별·연령별 객단가 차이가 크지 않아 방문 빈도 중심의 고객 관리가 필요하다고 판단했습니다.
+                  </p>
+                </figure>
+                <figure class="media-card no-media">
+                  <figcaption>상품 분석</figcaption>
+                  <p class="media-card-desc">
+                    시간대, 요일, 성별, 연령대별 인기 상품 차이를 확인하고 상품 구비·배치 개선 기회를 도출했습니다.
+                  </p>
+                </figure>
+                <figure class="media-card no-media">
+                  <figcaption>운영 전략</figcaption>
+                  <p class="media-card-desc">
+                    RFM 기반 회원등급 개편, 연관분석 기반 상품 재배치, PB·이벤트·날씨 경영 강화 전략을 제안했습니다.
+                  </p>
+                </figure>
+              </div>
             </section>
 
-            <section id="insights" class="detail-section">
-              <h2>핵심 인사이트</h2>
-              <div class="insight-grid">
-                <article class="insight-card">
-                  <span>01</span>
-                  <h3>방문 빈도 중심 고객 관리</h3>
-                  <p>기존 등급은 최근 방문 여부 중심이라 고객 가치를 충분히 반영하지 못했습니다. <span class="text-highlight">RFM 점수에 F 값을 높게 반영</span>해 포·스·코·취준생 등급으로 재편하는 방안을 제시했습니다.</p>
+            <section id="improvements" class="detail-section">
+              <h2>개선 사항</h2>
+              <div class="improvement-list">
+                <article class="improvement-card">
+                  <div class="improvement-head">
+                    <h3 class="improvement-title">방문 빈도를 반영하지 못한 고객 등급</h3>
+                  </div>
+                  <div class="improvement-grid">
+                    <div class="improvement-panel">
+                      <span class="improvement-label">AS-IS</span>
+                      <ul>
+                        <li>기존 등급은 최근 방문 여부 중심으로 고객 가치를 판단</li>
+                        <li>성별·연령별 객단가 차이가 크지 않아 세그먼트만으로 차별화가 어려운 상태</li>
+                        <li>반복 방문 고객의 구매 기여도를 등급에 충분히 반영하지 못하는 문제</li>
+                      </ul>
+                    </div>
+                    <div class="improvement-panel to-be">
+                      <span class="improvement-label">TO-BE</span>
+                      <ul>
+                        <li><span class="text-highlight">RFM 점수에서 F 값을 높게 반영</span></li>
+                        <li>포·스·코·취준생 등급으로 고객군을 재편하는 방안 제안</li>
+                        <li>방문 빈도 중심의 재방문 유도 전략 수립</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <p>고객을 단순 속성이 아니라 구매 빈도와 재방문 가능성 중심으로 관리하는 전략을 제시했습니다.</p>
                 </article>
-                <article class="insight-card">
-                  <span>02</span>
-                  <h3>연관 구매 기반 상품 배치</h3>
-                  <p>가공식, 음료, 식재료, 빵·디저트 등 <span class="text-highlight">상위 품목 간 연관성을 분석</span>해 함께 구매될 가능성이 높은 상품을 인접 배치하는 개선안을 도출했습니다.</p>
+
+                <article class="improvement-card">
+                  <div class="improvement-head">
+                    <h3 class="improvement-title">함께 구매되는 상품 배치 반영 부족</h3>
+                  </div>
+                  <div class="improvement-grid">
+                    <div class="improvement-panel">
+                      <span class="improvement-label">AS-IS</span>
+                      <ul>
+                        <li>상품 배치가 실제 동시 구매 패턴을 충분히 반영하지 못하는 상태</li>
+                        <li>가공식, 음료, 식재료, 빵·디저트 등 상위 품목 간 교차 구매 가능성 존재</li>
+                        <li>연관 구매를 매장 동선과 진열 전략으로 연결하지 못하는 한계</li>
+                      </ul>
+                    </div>
+                    <div class="improvement-panel to-be">
+                      <span class="improvement-label">TO-BE</span>
+                      <ul>
+                        <li><span class="text-highlight">상위 품목 간 연관성 분석</span>으로 동시 구매 가능성이 높은 조합 도출</li>
+                        <li>함께 구매될 가능성이 높은 상품을 인접 배치하는 개선안 제안</li>
+                        <li>객단가 상승과 충동 구매 유도를 고려한 매대 구성 전략 수립</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <p>판매 데이터를 매장 운영 전략으로 연결해 상품 배치와 매출 개선 방향을 함께 제안했습니다.</p>
                 </article>
-                <article class="insight-card">
-                  <span>03</span>
-                  <h3>PB·트렌드 상품 확대</h3>
-                  <p><span class="text-highlight">PB 상품 매출 비중이 1.6% 수준</span>으로 낮아 경쟁사 대비 확장 여지가 컸고, 인기 콜라보·저당·디저트 상품 확보를 통한 추가 매출 기회를 제안했습니다.</p>
-                </article>
-                <article class="insight-card">
-                  <span>04</span>
-                  <h3>날씨·이벤트 운영 강화</h3>
-                  <p>고온, 강수, 미세먼지 등 상황별 수요 상품을 전면 배치하고 <span class="text-highlight">이벤트데이 외부 매대를 활용해 계절성과 이벤트 수요를 매출로 연결</span>하는 전략을 제시했습니다.</p>
+
+                <article class="improvement-card">
+                  <div class="improvement-head">
+                    <h3 class="improvement-title">PB·이벤트·날씨 수요 대응 부족</h3>
+                  </div>
+                  <div class="improvement-grid">
+                    <div class="improvement-panel">
+                      <span class="improvement-label">AS-IS</span>
+                      <ul>
+                        <li><span class="text-highlight">PB 상품 매출 비중 1.6% 수준</span>으로 경쟁사 대비 확장 여지 존재</li>
+                        <li>계절·날씨·이벤트데이 수요를 상품 운영에 적극 반영하지 못하는 상태</li>
+                        <li>트렌드 상품과 외부 매대 활용 기회 부족</li>
+                      </ul>
+                    </div>
+                    <div class="improvement-panel to-be">
+                      <span class="improvement-label">TO-BE</span>
+                      <ul>
+                        <li>인기 콜라보, 저당, 디저트 등 트렌드 상품 확보 제안</li>
+                        <li>고온, 강수, 미세먼지 상황별 수요 상품 전면 배치</li>
+                        <li><span class="text-highlight">이벤트데이 외부 매대</span>를 활용해 계절성과 이벤트 수요를 매출로 연결</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <p>상품 트렌드와 외부 환경 변수를 운영 전략에 반영해 추가 매출 기회를 구체화했습니다.</p>
                 </article>
               </div>
             </section>
@@ -96,8 +191,10 @@
           </article>
 
           <aside class="detail-nav" aria-label="편의점 분석 detail navigation">
-            <a href="#summary">요약</a>
-            <a href="#insights">인사이트</a>
+            <a href="#overview">개요</a>
+            <a href="#role">분석 범위</a>
+            <a href="#demo">시연</a>
+            <a href="#improvements">개선</a>
             <a href="#report">보고서</a>
           </aside>
         </div>

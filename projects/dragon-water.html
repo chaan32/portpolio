@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dragon Water 쇼핑몰 사이트</title>
     <meta name="description" content="Dragon Water 쇼핑몰 사이트 풀스택 개발 프로젝트">
-    <link rel="stylesheet" href="../assets/styles.css">
+    <link rel="stylesheet" href="../assets/styles.css?v=20260707-balanced-improvements">
   </head>
   <body>
     <header class="site-header">
@@ -46,64 +46,61 @@
       <section class="section">
         <div class="container detail-layout">
           <article class="detail-content">
-            <section id="overview" class="detail-section">
-              <h2>개요</h2>
-              <p>
-                Dragon Water 쇼핑몰 사이트는 일반 고객과 기업 고객이 정수기 제품을 탐색하고 구매할 수 있는 쇼핑몰입니다.
-                프론트엔드는 React, TypeScript, Vite, React Query를 기반으로 <span class="text-highlight">상품 목록, 상세, 장바구니, 주문, 결제 결과, 마이페이지, 고객센터, 관리자 화면</span>을 구성했습니다.
-              </p>
-              <p>
-                백엔드는 Spring Boot 3.5.4와 Java 21 기반으로 회원 인증, 상품/카테고리, 장바구니, 주문, 결제, 배송, 문의, 공지, FAQ, 통계, 관리자 API를 제공합니다.
-                <span class="text-highlight">JWT 인증과 토큰 재발급 흐름</span>을 두고, MySQL과 Redis를 Docker Compose로 함께 운영할 수 있도록 배포 구성을 잡았습니다.
-              </p>
-            </section>
+            <div class="overview-role-grid">
+              <section id="overview" class="detail-section">
+                <h2>개요</h2>
+                <p>
+                  Dragon Water 쇼핑몰 사이트는 일반 고객과 기업 고객이 정수기 제품을 탐색하고 구매할 수 있는 쇼핑몰입니다.
+                  프론트엔드는 React, TypeScript, Vite, React Query를 기반으로 <span class="text-highlight">상품 목록, 상세, 장바구니, 주문, 결제 결과, 마이페이지, 고객센터, 관리자 화면</span>을 구성했습니다.
+                </p>
+                <p>
+                  백엔드는 Spring Boot 3.5.4와 Java 21 기반으로 회원 인증, 상품/카테고리, 장바구니, 주문, 결제, 배송, 문의, 공지, FAQ, 통계, 관리자 API를 제공합니다.
+                  <span class="text-highlight">JWT 인증과 토큰 재발급 흐름</span>을 두고, MySQL과 Redis를 Docker Compose로 함께 운영할 수 있도록 구성했습니다.
+                </p>
+              </section>
 
-            <section id="features" class="detail-section">
-              <h2>핵심 기능</h2>
-              <div class="insight-grid">
-                <article class="insight-card">
-                  <span>01</span>
-                  <h3>쇼핑몰 사용자 흐름</h3>
-                  <p>메인, 브랜드 소개, 상품 목록, 상품 상세, 장바구니, 주문, 결제 결과, 마이페이지까지 이어지는 <span class="text-highlight">구매 경험을 구성</span>했습니다.</p>
-                </article>
-                <article class="insight-card">
-                  <span>02</span>
-                  <h3>회원 인증</h3>
-                  <p>JWT access token과 refresh token을 사용하고, <span class="text-highlight">401 응답 시 토큰 재발급 후 원 요청을 재시도</span>하는 API 호출 흐름을 구성했습니다.</p>
-                </article>
-                <article class="insight-card">
-                  <span>03</span>
-                  <h3>관리자 운영 기능</h3>
-                  <p>상품, 카테고리, 상품 이미지, 상세 콘텐츠, 공지, FAQ, 문의, 주문, 교환/환불, 기업 회원 승인, 통계 화면을 <span class="text-highlight">관리자 영역으로 분리</span>했습니다.</p>
-                </article>
-                <article class="insight-card">
-                  <span>04</span>
-                  <h3>기업 고객 관리</h3>
-                  <p>본사/지점 등 기업 고객 유형을 고려한 회원 가입, 기업 요청 승인, 본사 대시보드, <span class="text-highlight">지점 주문 관리 흐름</span>을 설계했습니다.</p>
-                </article>
-                <article class="insight-card">
-                  <span>05</span>
-                  <h3>상품 콘텐츠 관리</h3>
-                  <p>상품 이미지 업로드, 썸네일 지정, 상세 콘텐츠 저장, 메인 페이지 노출 상품 관리 등 운영자가 직접 상품 정보를 갱신할 수 있게 했습니다.</p>
-                </article>
-                <article class="insight-card">
-                  <span>06</span>
-                  <h3>고객센터</h3>
-                  <p>공지사항, FAQ, 일반 문의, 상품 문의, 클레임 기능을 구성해 구매 이후의 문의와 운영 대응 흐름을 함께 처리했습니다.</p>
-                </article>
+              <section id="role" class="detail-section">
+                <h2>역할</h2>
+                <ul class="bullets">
+                  <li><span class="text-highlight">React/TypeScript 기반 쇼핑몰 화면과 관리자 화면 구조 설계 및 구현</span></li>
+                  <li><span class="text-highlight">Spring Boot 기반 REST API 서버 설계</span>와 도메인별 Controller, Service, Repository 구현</li>
+                  <li><span class="text-highlight">JWT 인증, refresh token 재발급, 인증 헤더 자동 주입</span>, 인증 실패 처리 흐름 구성</li>
+                  <li>상품, 장바구니, 주문, 결제, 회원, 문의, 공지, FAQ, 통계 API 연동</li>
+                  <li>MySQL, Redis, Spring Boot 애플리케이션을 <span class="text-highlight">Docker Compose로 실행하는 배포 구조 구성</span></li>
+                  <li>NCP Object Storage 기반 이미지 업로드와 상품 이미지 관리 흐름 구현</li>
+                </ul>
+              </section>
+            </div>
+
+            <section id="demo" class="detail-section">
+              <h2>프로젝트 기능 및 시연</h2>
+              <div class="media-grid feature-demo-grid">
+                <figure class="media-card">
+                  <figcaption>쇼핑몰 사용자 흐름</figcaption>
+                  <img src="../assets/covers/dragonwater-cover.png" alt="Dragon Water 쇼핑몰 화면">
+                  <p class="media-card-desc">
+                    메인, 브랜드 소개, 상품 목록, 상품 상세, 장바구니, 주문, 결제 결과, 마이페이지까지 이어지는 구매 경험을 구성했습니다.
+                  </p>
+                </figure>
+                <figure class="media-card no-media">
+                  <figcaption>회원 인증</figcaption>
+                  <p class="media-card-desc">
+                    JWT access token과 refresh token을 사용하고, 401 응답 시 토큰 재발급 후 원 요청을 재시도하는 API 호출 흐름을 구성했습니다.
+                  </p>
+                </figure>
+                <figure class="media-card no-media">
+                  <figcaption>관리자 운영 기능</figcaption>
+                  <p class="media-card-desc">
+                    상품, 카테고리, 이미지, 공지, FAQ, 문의, 주문, 교환/환불, 기업 회원 승인, 통계 화면을 관리자 영역으로 분리했습니다.
+                  </p>
+                </figure>
+                <figure class="media-card no-media">
+                  <figcaption>기업 고객 관리</figcaption>
+                  <p class="media-card-desc">
+                    본사/지점 등 기업 고객 유형을 고려한 회원 가입, 기업 요청 승인, 본사 대시보드, 지점 주문 관리 흐름을 설계했습니다.
+                  </p>
+                </figure>
               </div>
-            </section>
-
-            <section id="role" class="detail-section">
-              <h2>역할</h2>
-              <ul class="bullets">
-                <li><span class="text-highlight">React/TypeScript 기반 쇼핑몰 화면과 관리자 화면 구조 설계 및 구현</span></li>
-                <li><span class="text-highlight">Spring Boot 기반 REST API 서버 설계</span>와 도메인별 Controller, Service, Repository 구현</li>
-                <li><span class="text-highlight">JWT 인증, refresh token 재발급, 인증 헤더 자동 주입</span>, 인증 실패 처리 흐름 구성</li>
-                <li>상품, 장바구니, 주문, 결제, 회원, 문의, 공지, FAQ, 통계 API 연동</li>
-                <li>MySQL, Redis, Spring Boot 애플리케이션을 <span class="text-highlight">Docker Compose로 실행하는 배포 구조 구성</span></li>
-                <li>NCP Object Storage 기반 이미지 업로드와 상품 이미지 관리 흐름 구현</li>
-              </ul>
             </section>
 
             <section id="stack" class="detail-section">
@@ -147,13 +144,93 @@
             </section>
 
             <section id="architecture" class="detail-section">
-              <h2>시스템 구성</h2>
+              <h2>시스템 아키텍처</h2>
               <ul class="bullets">
                 <li>프론트엔드는 Vercel 배포를 고려한 Vite React 앱으로 구성하고, <span class="text-highlight">API 기본 주소는 환경 변수 또는 <code>https://api.dragonwater.co.kr</code>로 분리</span>했습니다.</li>
                 <li>백엔드는 Gradle 멀티 스테이지 Dockerfile로 JAR를 빌드한 뒤 Java 21 JRE 컨테이너에서 실행되도록 구성했습니다.</li>
                 <li>운영 컨테이너는 Spring Boot App, MySQL, Redis로 나뉘며, <span class="text-highlight">DB와 Redis의 healthcheck가 완료된 뒤 애플리케이션이 올라오도록</span> Docker Compose 의존성을 설정했습니다.</li>
                 <li>상품 이미지와 상세 콘텐츠 이미지는 <span class="text-highlight">Object Storage에 업로드</span>하고, 프론트엔드에서는 스토리지 URL 생성 헬퍼로 이미지 경로를 일관되게 다룹니다.</li>
               </ul>
+            </section>
+
+            <section id="improvements" class="detail-section">
+              <h2>개선 사항</h2>
+              <div class="improvement-list">
+                <article class="improvement-card">
+                  <div class="improvement-head">
+                    <h3 class="improvement-title">인증 만료 시 사용자 흐름 단절</h3>
+                  </div>
+                  <div class="improvement-grid">
+                    <div class="improvement-panel">
+                      <span class="improvement-label">AS-IS</span>
+                      <ul>
+                        <li>Access token 만료 시 API 요청이 401로 실패</li>
+                        <li>사용자가 장바구니, 주문, 마이페이지 흐름에서 다시 로그인해야 하는 문제</li>
+                        <li>인증 실패 처리가 화면마다 흩어질 경우 유지보수 부담 증가</li>
+                      </ul>
+                    </div>
+                    <div class="improvement-panel to-be">
+                      <span class="improvement-label">TO-BE</span>
+                      <ul>
+                        <li><span class="text-highlight">refresh token 기반 access token 재발급 흐름</span> 구성</li>
+                        <li>401 응답 시 토큰 재발급 후 원 요청을 재시도하는 API 클라이언트 흐름 적용</li>
+                        <li>인증 헤더 자동 주입과 실패 처리를 공통 로직으로 분리</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <p>사용자 구매 흐름을 끊지 않고 인증 안정성과 프론트-백엔드 연동 일관성을 높였습니다.</p>
+                </article>
+
+                <article class="improvement-card">
+                  <div class="improvement-head">
+                    <h3 class="improvement-title">상품 이미지 저장 위치와 배포 환경 결합</h3>
+                  </div>
+                  <div class="improvement-grid">
+                    <div class="improvement-panel">
+                      <span class="improvement-label">AS-IS</span>
+                      <ul>
+                        <li>상품 이미지가 애플리케이션 서버에 묶이면 재배포와 서버 교체에 취약</li>
+                        <li>상품 썸네일, 상세 이미지, 메인 노출 이미지의 경로 관리가 복잡해질 수 있는 구조</li>
+                        <li>프론트와 백엔드가 이미지 접근 경로를 다르게 다룰 경우 운영 오류 가능</li>
+                      </ul>
+                    </div>
+                    <div class="improvement-panel to-be">
+                      <span class="improvement-label">TO-BE</span>
+                      <ul>
+                        <li><span class="text-highlight">NCP Object Storage 기반 이미지 업로드</span> 적용</li>
+                        <li>상품 이미지 업로드, 썸네일 지정, 상세 콘텐츠 저장 흐름 구성</li>
+                        <li>프론트에서는 스토리지 URL 생성 헬퍼로 이미지 경로 처리 일관화</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <p>애플리케이션 서버와 정적 파일 저장소를 분리해 배포 안정성과 운영 편의성을 확보했습니다.</p>
+                </article>
+
+                <article class="improvement-card">
+                  <div class="improvement-head">
+                    <h3 class="improvement-title">로컬 실행 환경과 운영 구성 불일치</h3>
+                  </div>
+                  <div class="improvement-grid">
+                    <div class="improvement-panel">
+                      <span class="improvement-label">AS-IS</span>
+                      <ul>
+                        <li>Spring Boot, MySQL, Redis를 각각 실행하면 개발/배포 환경 차이가 발생</li>
+                        <li>DB와 Redis 준비 전에 애플리케이션이 먼저 실행되면 초기 연결 실패 가능</li>
+                        <li>협업 시 로컬 환경 구성 비용이 커지는 문제</li>
+                      </ul>
+                    </div>
+                    <div class="improvement-panel to-be">
+                      <span class="improvement-label">TO-BE</span>
+                      <ul>
+                        <li><span class="text-highlight">Docker Compose 기반 실행 환경</span> 구성</li>
+                        <li>MySQL, Redis, Spring Boot App을 컨테이너 단위로 분리</li>
+                        <li>DB와 Redis healthcheck 완료 후 애플리케이션이 올라오도록 의존성 설정</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <p>개발 환경 재현성과 배포 안정성을 높이고 백엔드 실행 흐름을 명확하게 정리했습니다.</p>
+                </article>
+              </div>
             </section>
 
             <section id="summary" class="detail-section">
@@ -167,10 +244,11 @@
 
           <aside class="detail-nav" aria-label="Dragon Water detail navigation">
             <a href="#overview">개요</a>
-            <a href="#features">핵심 기능</a>
             <a href="#role">역할</a>
+            <a href="#demo">시연</a>
             <a href="#stack">기술 스택</a>
-            <a href="#architecture">시스템 구성</a>
+            <a href="#architecture">시스템 아키텍처</a>
+            <a href="#improvements">개선</a>
             <a href="#summary">정리</a>
           </aside>
         </div>

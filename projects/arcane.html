@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>ARCANE</title>
     <meta name="description" content="ARCANE 프로젝트" />
-    <link rel="stylesheet" href="../assets/styles.css" />
+    <link
+      rel="stylesheet"
+      href="../assets/styles.css?v=20260707-arcane-architecture2"
+    />
   </head>
   <body>
     <header class="site-header">
@@ -30,12 +33,13 @@
           <div class="page-hero-card">
             <p class="eyebrow">Project 01</p>
             <h1>ARCANE</h1>
-            <p class="lead">
-              Riot Games API 기반 League Of Legend 전적 검색 및 게임 정보 분석
-              서비스입니다. <br />
-              전적 검색, 챔피언 분석, 공략 게시판, 실시간 채팅, 패치노트와 랭킹
-              시스템을 제공합니다.
-            </p>
+            <div class="project-meta-list" aria-label="Project information">
+              <ul>
+                <li><strong>기간</strong> : <span>2026.01 ~ 2026.06</span></li>
+                <li><strong>규모</strong> : <span>개인 프로젝트</span></li>
+                <li><strong>기여도</strong> : <span>100%</span></li>
+              </ul>
+            </div>
             <div class="detail-actions">
               <a
                 class="button"
@@ -58,162 +62,226 @@
 
       <section class="section">
         <div class="container detail-layout">
-          <article class="detail-content">
-            <section id="overview" class="detail-section">
-              <h2>개요</h2>
-              <p>
-                Riot Games의 League Of Legend (이하 LOL) 전적 검색 및 게임 정보
-                분석 페이지입니다.
-              </p>
-              <p>
-                Riot에서 제공하는 API를 통해서 정보를 받고
-                <span class="text-highlight"
-                  >효율적으로 데이터를 서빙하고 해당 데이터를 분석</span
-                >하여 더 효과적인 데이터로 가공하여 이용자들에게 효과적인
-                데이터를 제공하는 페이지입니다.
-              </p>
-              <p>
-                전적 검색 뿐 아니라 Riot 홈페이지에서 제공하는 데이터를 크롤링을
-                통해 정리을 제공합니다.
-              </p>
-              <p>
-                또한 챔피언의 공략 글을 작성하는 게시판 기능을 만들고
-                <span class="text-highlight"
-                  >작성자와 직접 채팅 시스템을 통해 직접 소통</span
-                >할 수 있습니다.
-              </p>
-            </section>
+          <article class="detail-content arcane-detail">
+            <div class="overview-role-grid">
+              <section id="overview" class="detail-section">
+                <h2>개요</h2>
+                <p>
+                  ARCANE은 Riot Games API를 기반으로 게임 데이터를 수집·분석하여
+                  사용자에게 전적 검색과 다양한 게임 정보를 제공하는
+                  플랫폼입니다.
+                </p>
+                <p>
+                  단순한 전적 조회를 넘어 챔피언 분석, 패치노트, 랭킹, 공략
+                  게시판, 실시간 채팅 등 다양한 기능을 하나의 서비스에서
+                  제공하며, 사용자에게 보다 의미 있는 데이터를 전달하는 것을
+                  목표로 개발했습니다.
+                </p>
+                <div
+                  class="arcane-overview-tags"
+                  aria-label="ARCANE key features"
+                >
+                  <span>Riot API</span>
+                  <span>전적 검색</span>
+                  <span>챔피언 분석</span>
+                  <span>랭킹 갱신</span>
+                  <span>공략 게시판</span>
+                  <span>실시간 채팅</span>
+                </div>
+              </section>
+
+              <section id="role" class="detail-section">
+                <h2>역할</h2>
+                <ul class="role-impact-list">
+                  <li>
+                    <span class="role-impact-index">01</span>
+                    <p>
+                      API / Worker / AI Server
+                      <span class="metric-token">3개 서버</span>로 백엔드 구조
+                      분리
+                    </p>
+                  </li>
+                  <li>
+                    <span class="role-impact-index">02</span>
+                    <p>
+                      Riot 배치 작업을
+                      <span class="metric-token">Kafka jobId</span> 기반 비동기
+                      처리로 전환
+                    </p>
+                  </li>
+                  <li>
+                    <span class="role-impact-index">03</span>
+                    <p>
+                      전적 검색 API 지연 원인 분석:
+                      <span class="metric-token">평균 13.6초 / p95 35.5초</span>
+                      기준 개선
+                    </p>
+                  </li>
+                  <li>
+                    <span class="role-impact-index">04</span>
+                    <p>
+                      챔피언 분석 API 응답을
+                      <span class="metric-token">5~9초 -> 0.6~0.8초</span>
+                      수준으로 단축
+                    </p>
+                  </li>
+                  <li>
+                    <span class="role-impact-index">05</span>
+                    <p>
+                      Elasticsearch 적용으로 검색 응답을
+                      <span class="metric-token">4.005ms -> 1.067ms</span>로
+                      개선
+                    </p>
+                  </li>
+                  <li>
+                    <span class="role-impact-index">06</span>
+                    <p>
+                      Redis Distributed Lock으로 동일 전적 검색 중복 Riot API
+                      호출 제어
+                    </p>
+                  </li>
+                  <li>
+                    <span class="role-impact-index">07</span>
+                    <p>
+                      <span class="metric-token"
+                        >Challenger 300명 / Grandmaster 700명</span
+                      >
+                      랭킹 데이터 캐시 갱신 구조 구현
+                    </p>
+                  </li>
+                  <li>
+                    <span class="role-impact-index">08</span>
+                    <p>
+                      Prometheus/Grafana, ELK 기반 운영 지표와 로그 추적 환경
+                      구성
+                    </p>
+                  </li>
+                </ul>
+              </section>
+            </div>
 
             <section id="demo" class="detail-section">
               <h2>프로젝트 기능 및 시연</h2>
               <div class="media-grid feature-demo-grid">
+                <!-- 전적검색 -->
                 <figure class="media-card">
-                  <img
-                    src="../assets/notion/arcane/c7a8984926c7b119.gif"
-                    alt="ARCANE 관리자 페이지 GIF"
-                  />
-                  <figcaption>
-                    <strong>관리자 페이지</strong>
-                    <span>서버 자원, 로그, 랭킹 갱신, 게임 데이터 수집 상태를 확인하고 오래 걸리는 작업의 진행 프로세스를 실시간으로 추적합니다.</span>
-                  </figcaption>
-                </figure>
-                <figure class="media-card">
-                  <img
-                    src="../assets/notion/arcane/4d769992028d8c3f.gif"
-                    alt="ARCANE 챔피언 분석 GIF"
-                  />
-                  <figcaption>
-                    <strong>챔피언 분석</strong>
-                    <span>상위 티어 랭커 데이터를 기반으로 RFM 분석을 수행하고 라인별 OP, 1티어부터 5티어까지 구분해 제공합니다.</span>
-                  </figcaption>
-                </figure>
-                <figure class="media-card">
-                  <img
-                    src="../assets/notion/arcane/63505d72dfa16dd9.gif"
-                    alt="ARCANE 챔피언 상세 분석 GIF"
-                  />
-                  <figcaption>
-                    <strong>챔피언 별 상세 분석</strong>
-                    <span>승률, 픽률, 아이템, 주문, 룬 통계와 패치 이력을 함께 제공하고 챔피언별 공략 게시판을 연결합니다.</span>
-                  </figcaption>
-                </figure>
-                <figure class="media-card">
+                  <figcaption>전적 검색</figcaption>
                   <img
                     src="../assets/notion/arcane/4046f163592c72ed.gif"
                     alt="ARCANE 전적 검색 GIF"
                   />
-                  <figcaption>
-                    <strong>전적 검색</strong>
-                    <span>소환사의 최근 20게임, 숙련도, 승률, 라인 통계를 보여주고 게임 지표 기반 AI 점수와 이벤트 흐름을 제공합니다.</span>
-                  </figcaption>
+                  <p class="media-card-desc">
+                    소환사의 최근 20게임, 숙련도, 승률, 라인 통계를 보여주고
+                    게임 지표 기반 AI 점수와 이벤트 흐름을 제공합니다.
+                  </p>
                 </figure>
+                <!-- 챔피언 분석 -->
                 <figure class="media-card">
+                  <figcaption>챔피언 분석</figcaption>
                   <img
-                    src="../assets/notion/arcane/b6628b6fdbf5d576.gif"
-                    alt="ARCANE 회원가입 GIF"
+                    src="../assets/notion/arcane/4d769992028d8c3f.gif"
+                    alt="ARCANE 챔피언 분석 GIF"
                   />
-                  <figcaption>
-                    <strong>회원가입</strong>
-                    <span>구글과 네이버 OAuth를 통해 가입할 수 있으며 닉네임 랜덤 제공 및 중복 체크 흐름을 구성했습니다.</span>
-                  </figcaption>
+                  <p class="media-card-desc">
+                    상위 티어 랭커 데이터를 기반으로 RFM 분석을 수행하고 라인별
+                    OP, 1티어부터 5티어까지 구분해 제공합니다.
+                  </p>
                 </figure>
+                <!-- 챔피언 별 상세 분석 -->
                 <figure class="media-card">
+                  <figcaption>챔피언 별 상세 분석</figcaption>
                   <img
-                    src="../assets/notion/arcane/bd5bb503c0d53a36.gif"
-                    alt="ARCANE 공략 및 채팅 시스템 GIF"
+                    src="../assets/notion/arcane/63505d72dfa16dd9.gif"
+                    alt="ARCANE 챔피언 상세 분석 GIF"
                   />
-                  <figcaption>
-                    <strong>공략 가이드 및 채팅 시스템</strong>
-                    <span>Markdown Editor로 공략을 작성하고, 공략 작성자에게 실시간 채팅으로 추가 질문을 보낼 수 있습니다.</span>
-                  </figcaption>
+                  <p class="media-card-desc">
+                    승률, 픽률, 아이템, 주문, 룬 통계와 패치 이력을 함께
+                    제공하고 챔피언별 공략 게시판을 연결합니다.
+                  </p>
                 </figure>
+                <!-- 랭킹 시스템 -->
                 <figure class="media-card">
-                  <img
-                    src="../assets/notion/arcane/1e34d8452b3c0be0.gif"
-                    alt="ARCANE 패치노트 GIF"
-                  />
-                  <figcaption>
-                    <strong>패치노트 정리</strong>
-                    <span>Riot 원본 패치노트를 인용해 정리하고 챔피언별로 적용된 패치 이력을 구분해 확인할 수 있게 했습니다.</span>
-                  </figcaption>
-                </figure>
-                <figure class="media-card">
+                  <figcaption>랭킹 시스템</figcaption>
                   <img
                     src="../assets/notion/arcane/b5de74e0569cdfd7.gif"
                     alt="ARCANE 랭킹 시스템 GIF"
                   />
-                  <figcaption>
-                    <strong>랭킹 시스템</strong>
-                    <span>Challenger, GrandMaster, Master 티어 유저의 순위와 승률, 점수를 랭킹 순으로 제공하고 30분마다 자동 갱신합니다.</span>
-                  </figcaption>
+                  <p class="media-card-desc">
+                    Challenger, GrandMaster, Master 티어 유저의 순위와 승률,
+                    점수를 랭킹 순으로 제공하고 30분마다 자동 갱신합니다.
+                  </p>
+                </figure>
+                <!-- 회원 가입 -->
+                <figure class="media-card">
+                  <figcaption>회원가입</figcaption>
+                  <img
+                    src="../assets/notion/arcane/b6628b6fdbf5d576.gif"
+                    alt="ARCANE 회원가입 GIF"
+                  />
+                  <p class="media-card-desc">
+                    구글과 네이버 OAuth를 통해 가입할 수 있으며 닉네임 랜덤 제공
+                    및 중복 체크 흐름을 구성했습니다.
+                  </p>
+                </figure>
+                <!-- 공략 가이드 및 채팅 시스템 -->
+                <figure class="media-card">
+                  <figcaption>공략 가이드 및 채팅 시스템</figcaption>
+                  <img
+                    src="../assets/notion/arcane/bd5bb503c0d53a36.gif"
+                    alt="ARCANE 공략 및 채팅 시스템 GIF"
+                  />
+                  <p class="media-card-desc">
+                    Markdown Editor로 공략을 작성하고, 공략 작성자에게 실시간
+                    채팅으로 추가 질문을 보낼 수 있습니다.
+                  </p>
+                </figure>
+                <!-- 패치노트 정리 -->
+                <figure class="media-card">
+                  <figcaption>패치노트 정리</figcaption>
+                  <img
+                    src="../assets/notion/arcane/1e34d8452b3c0be0.gif"
+                    alt="ARCANE 패치노트 GIF"
+                  />
+                  <p class="media-card-desc">
+                    Riot 원본 패치노트를 인용해 정리하고 챔피언별로 적용된 패치
+                    이력을 구분해 확인할 수 있게 했습니다.
+                  </p>
+                </figure>
+                <!-- 관리자 페이지 -->
+                <figure class="media-card">
+                  <figcaption>관리자 페이지</figcaption>
+                  <img
+                    src="../assets/notion/arcane/c7a8984926c7b119.gif"
+                    alt="ARCANE 관리자 페이지 GIF"
+                  />
+                  <p class="media-card-desc">
+                    서버 자원, 로그, 랭킹 갱신, 게임 데이터 수집 상태를 확인하고
+                    오래 걸리는 작업의 진행 프로세스를 로그를 바탕으로 실시간
+                    추적합니다.
+                  </p>
                 </figure>
               </div>
             </section>
 
-            <section id="role" class="detail-section">
-              <h2>역할</h2>
-              <ul class="bullets">
-                <li>백엔드 전반적인 아키텍처 설계</li>
-                <li>
-                  <span class="text-highlight"
-                    >단일 서버 구조를 MSA 기반 구조로 분리</span
-                  >
-                </li>
-                <li>
-                  <span class="text-highlight"
-                    >대용량 Riot 데이터 수집 파이프라인 구축</span
-                  >
-                </li>
-                <li>챔피언 분석 시스템 구현</li>
-                <li>AI 점수 계산 서버 연동 및 점수 계산 회귀 모델 작성</li>
-                <li>WebSocket/STOMP 기반 실시간 채팅 시스템 개선</li>
-                <li>
-                  <span class="text-highlight"
-                    >ElasticSearch 기반 검색 성능 개선 설계 및 적용</span
-                  >
-                </li>
-                <li>모니터링 구조를 포함한 운영 인프라 구성</li>
-              </ul>
-            </section>
-
             <section id="architecture" class="detail-section">
               <h2>시스템 아키텍처</h2>
-              <figure class="media-card wide-media architecture-image">
-                <img
-                  src="../assets/notion/arcane/73fc8bd0bf5ed103.png"
-                  alt="ARCANE 시스템 아키텍처"
-                />
-                <figcaption>시스템 아키텍처</figcaption>
-              </figure>
+              <div class="media-grid architecture-grid">
+                <figure class="media-card wide-media architecture-image">
+                  <img
+                    src="../assets/notion/arcane/73fc8bd0bf5ed103.png"
+                    alt="ARCANE 시스템 아키텍처"
+                  />
+                  <figcaption>시스템 아키텍처</figcaption>
+                </figure>
 
-              <h3>ERD</h3>
-              <figure class="media-card wide-media architecture-erd">
-                <img
-                  src="../assets/notion/arcane/9ea86af7c2c27a21.png"
-                  alt="ARCANE ERD"
-                />
-                <figcaption>ERD</figcaption>
-              </figure>
+                <figure class="media-card wide-media architecture-erd">
+                  <img
+                    src="../assets/notion/arcane/9ea86af7c2c27a21.png"
+                    alt="ARCANE ERD"
+                  />
+                  <figcaption>ERD</figcaption>
+                </figure>
+              </div>
             </section>
 
             <section id="improvements" class="detail-section">
@@ -222,34 +290,48 @@
                 <article class="improvement-card">
                   <div class="improvement-head">
                     <h3 class="improvement-title">
-                      단일 서버에서 장시간 작업을 함께 처리하며 발생한 API 응답
-                      지연
+                      장시간 Riot 작업으로 인한 API 응답 지연과 서버 간 결합
                     </h3>
                     <span class="improvement-kicker">상황 1</span>
                   </div>
                   <div class="improvement-grid">
                     <div class="improvement-panel">
                       <span class="improvement-label">AS-IS</span>
-                      <p>
-                        Arcane 서버는 일반 API 응답뿐 아니라 Riot API 기반 랭킹
-                        업데이트, Match 데이터 수집, 챔피언 통계 분석, AI 점수
-                        계산 요청까지 함께 처리했습니다. 장시간 작업이 DB 커넥션
-                        풀, CPU, 메모리, 네트워크 I/O를 사용자 요청과 공유하면서
-                        <span class="text-highlight"
-                          >전적 검색 API는 평균 약 13.6초, p95 약 35.5초</span
-                        >까지 증가했습니다.
-                      </p>
+                      <ul>
+                        <li>
+                          일반 API 응답과 Riot API 기반 배치 작업을 단일
+                          서버에서 함께 처리
+                        </li>
+                        <li>
+                          서버를 나누더라도 HTTP 직접 호출 구조에서는 요청
+                          서버가 장시간 작업 완료까지 대기
+                        </li>
+                        <li>
+                          <span class="text-highlight"
+                            >전적 검색 API 평균 약 13.6초, p95 약 35.5초까지
+                            증가</span
+                          >하고 timeout / 재시도 / 장애 전파 위험 발생
+                        </li>
+                      </ul>
                     </div>
                     <div class="improvement-panel to-be">
                       <span class="improvement-label">TO-BE</span>
-                      <p>
-                        <span class="text-highlight"
-                          >API Server, Worker Server, AI Server를 분리</span
-                        >했습니다. API Server는 사용자 요청과 Kafka 작업 요청
-                        발행에 집중하고, Worker Server는 랭킹 업데이트, 데이터
-                        수집, 챔피언 분석을 담당하도록 분리했습니다. AI Server는
-                        모델 추론 역할만 담당하도록 나눴습니다.
-                      </p>
+                      <ul>
+                        <li>
+                          <span class="text-highlight"
+                            >API Server, Worker Server, AI Server 분리</span
+                          >
+                        </li>
+                        <li>
+                          <span class="text-highlight"
+                            >Kafka 기반 작업 요청 이벤트 발행</span
+                          >으로 서버 간 결합 완화
+                        </li>
+                        <li>
+                          API Server는 사용자 요청과 이벤트 발행에 집중하고,
+                          Worker / AI Server가 데이터 수집과 모델 추론을 전담
+                        </li>
+                      </ul>
                     </div>
                   </div>
                   <p>
@@ -259,38 +341,6 @@
                       >Kafka jobId 기반 비동기 작업</span
                     >으로 처리되도록 개선했습니다.
                   </p>
-                </article>
-
-                <article class="improvement-card">
-                  <div class="improvement-head">
-                    <h3 class="improvement-title">
-                      HTTP 기반 서버 간 호출로 인한 MSA 효과 제한
-                    </h3>
-                    <span class="improvement-kicker">상황 2</span>
-                  </div>
-                  <div class="improvement-grid">
-                    <div class="improvement-panel">
-                      <span class="improvement-label">AS-IS</span>
-                      <p>
-                        API Server, Worker Server, AI Server로 나누더라도 모든
-                        작업을 HTTP로 직접 호출하면 요청을 보낸 서버가 응답을
-                        기다려야 했습니다. 수십 초 이상 걸리는 작업은 timeout,
-                        재시도, 장애 전파 문제로 이어질 수 있었습니다.
-                      </p>
-                    </div>
-                    <div class="improvement-panel to-be">
-                      <span class="improvement-label">TO-BE</span>
-                      <p>
-                        <span class="text-highlight"
-                          >Kafka를 도입해 API Server는 작업 요청 이벤트만
-                          발행</span
-                        >하고, Worker Server가 Consumer로 메시지를 소비해 실제
-                        작업을 수행하도록 변경했습니다. 작업 완료/실패도 Kafka
-                        이벤트로 API Server에 전달해 관리자 페이지에서 상태를
-                        확인할 수 있도록 구성했습니다.
-                      </p>
-                    </div>
-                  </div>
                   <table class="data-table">
                     <thead>
                       <tr>
@@ -329,7 +379,7 @@
                   </table>
                 </article>
 
-                <article class="improvement-card">
+                <!-- <article class="improvement-card">
                   <div class="improvement-head">
                     <h3 class="improvement-title">
                       Riot 패치 변경에 따른 하드코딩 데이터 관리 한계
@@ -360,9 +410,9 @@
                       </p>
                     </div>
                   </div>
-                </article>
+                </article> -->
 
-                <article class="improvement-card">
+                <!-- <article class="improvement-card">
                   <div class="improvement-head">
                     <h3 class="improvement-title">
                       대량 Match 데이터 분석을 위한 Raw Data 저장 구조 부재
@@ -399,33 +449,47 @@
                       >70,910건의 participant raw data</span
                     >를 저장했습니다.
                   </p>
-                </article>
+                </article> -->
 
                 <article class="improvement-card">
                   <div class="improvement-head">
                     <h3 class="improvement-title">
                       챔피언 통계 조회 시 반복 계산으로 인한 응답 지연
                     </h3>
-                    <span class="improvement-kicker">상황 5</span>
+                    <span class="improvement-kicker">상황 2</span>
                   </div>
                   <div class="improvement-grid">
                     <div class="improvement-panel">
                       <span class="improvement-label">AS-IS</span>
-                      <p>
-                        챔피언 티어 리스트와 상세 통계는 자주 조회되지만 초 단위
-                        실시간성이 필요한 데이터는 아닙니다. 기존 /statistics/*
-                        계열 API는 요청 시점에 데이터를 조회하고 계산하는 흐름에
-                        가까워 약 5초~9초 수준의 응답 시간이 발생했습니다.
-                      </p>
+                      <ul>
+                        <li>
+                          챔피언 티어 리스트와 상세 통계를 요청 시점마다
+                          조회하고 계산
+                        </li>
+                        <li>
+                          초 단위 실시간성이 낮은 데이터에도 반복 계산 비용 발생
+                        </li>
+                        <li>
+                          기존 /statistics/* 계열 API에서 약 5초~9초 수준의 응답
+                          지연
+                        </li>
+                      </ul>
                     </div>
                     <div class="improvement-panel to-be">
                       <span class="improvement-label">TO-BE</span>
-                      <p>
-                        MongoDB에 저장된 Match Participant Raw Data를 Worker
-                        Server가 사전 분석하고, 챔피언별 승률, 픽률, 포지션별
-                        통계, 아이템 사용률, 소환사 주문 사용률, 룬 통계를 MySQL
-                        분석 테이블에 저장하도록 변경했습니다.
-                      </p>
+                      <ul>
+                        <li>
+                          Worker Server가 MongoDB의 Match Participant Raw Data를
+                          사전 분석
+                        </li>
+                        <li>
+                          승률, 픽률, 포지션별 통계, 아이템/스펠/룬 통계를 MySQL
+                          분석 테이블에 저장
+                        </li>
+                        <li>
+                          조회 시 계산 부담을 줄이고 분석 API 응답 시간 단축
+                        </li>
+                      </ul>
                     </div>
                   </div>
                   <p>
@@ -442,30 +506,43 @@
                     <h3 class="improvement-title">
                       LIKE 기반 검색의 한계와 Elasticsearch 개선
                     </h3>
-                    <span class="improvement-kicker">상황 6</span>
+                    <span class="improvement-kicker">상황 3</span>
                   </div>
                   <div class="improvement-grid">
                     <div class="improvement-panel">
                       <span class="improvement-label">AS-IS</span>
-                      <p>
-                        소환사 자동완성과 공략글 검색은 모두 MySQL의 LIKE
-                        %keyword% 방식에 의존했습니다. 검색창 입력처럼 반복
-                        호출되는 기능에서는 DB 부하가 누적되고, Markdown 기반
-                        LONGTEXT 본문 검색은 데이터가 늘수록 확장성이
-                        떨어졌습니다.
-                      </p>
+                      <ul>
+                        <li>
+                          소환사 자동완성과 공략글 검색 모두 MySQL LIKE
+                          %keyword% 방식에 의존
+                        </li>
+                        <li>
+                          검색창 입력처럼 반복 호출되는 기능에서 DB 부하 누적
+                        </li>
+                        <li>
+                          Markdown 기반 LONGTEXT 본문 검색은 데이터 증가에 따라
+                          확장성 한계 발생
+                        </li>
+                      </ul>
                     </div>
                     <div class="improvement-panel to-be">
                       <span class="improvement-label">TO-BE</span>
-                      <p>
-                        소환사 검색은 gameName, tagLine, riotId를
-                        <span class="text-highlight"
-                          >Elasticsearch에 색인하고 n-gram 기반 자동완성
-                          검색</span
-                        >이 가능하도록 구성했습니다. 공략글 검색은 title,
-                        content, championNameKo, championNameEn, authorName을
-                        arcane_guide_posts 인덱스에 색인했습니다.
-                      </p>
+                      <ul>
+                        <li>
+                          gameName, tagLine, riotId를
+                          <span class="text-highlight"
+                            >Elasticsearch에 색인하고 n-gram 기반 자동완성
+                            검색</span
+                          >
+                        </li>
+                        <li>
+                          공략글 title, content, championNameKo, championNameEn,
+                          authorName 색인
+                        </li>
+                        <li>
+                          검색은 Elasticsearch, 정합성 조회는 MySQL로 역할 분리
+                        </li>
+                      </ul>
                     </div>
                   </div>
                   <p>
@@ -538,28 +615,39 @@
                     <h3 class="improvement-title">
                       운영 모니터링 도구 부재와 MSA 로그 추적 어려움
                     </h3>
-                    <span class="improvement-kicker">상황 7</span>
+                    <span class="improvement-kicker">상황 4</span>
                   </div>
                   <div class="improvement-grid">
                     <div class="improvement-panel">
                       <span class="improvement-label">AS-IS</span>
-                      <p>
-                        API Server, Worker Server, Kafka, Redis, MongoDB,
-                        MySQL이 함께 동작하면서 장애 원인을 단순 콘솔 로그만으로
-                        찾기 어려웠습니다. Riot API 401/504, Kafka broker 연결
-                        실패, MongoDB codec 오류, Data Dragon 이미지 403 등 장애
-                        종류도 다양했습니다.
-                      </p>
+                      <ul>
+                        <li>
+                          API Server, Worker Server, Kafka, Redis, MongoDB,
+                          MySQL이 함께 동작
+                        </li>
+                        <li>
+                          단순 콘솔 로그만으로 MSA 환경의 장애 원인 추적이
+                          어려운 상태
+                        </li>
+                        <li>
+                          Riot API 401/504, Kafka 연결 실패, MongoDB codec 오류
+                          등 장애 유형 다양
+                        </li>
+                      </ul>
                     </div>
                     <div class="improvement-panel to-be">
                       <span class="improvement-label">TO-BE</span>
-                      <p>
-                        API Server와 Worker Server의 로그 형식을 통일하고
-                        serverType, task, method, status, traceId, jobId를
-                        포함하도록 개선했습니다. 로그를 시간 단위 파일로
-                        저장하고 관리자 페이지에서 API/Worker 로그를 조회할 수
-                        있도록 구성했습니다.
-                      </p>
+                      <ul>
+                        <li>API Server와 Worker Server의 로그 형식 통일</li>
+                        <li>
+                          serverType, task, method, status, traceId, jobId를
+                          로그에 포함
+                        </li>
+                        <li>
+                          시간 단위 로그 파일 저장과 관리자 페이지 기반
+                          API/Worker 로그 조회 구성
+                        </li>
+                      </ul>
                     </div>
                   </div>
                   <p>
@@ -577,29 +665,44 @@
                     <h3 class="improvement-title">
                       랭킹 업데이트의 API 요청 문제 및 안정성 부족
                     </h3>
-                    <span class="improvement-kicker">상황 8</span>
+                    <span class="improvement-kicker">상황 5</span>
                   </div>
                   <div class="improvement-grid">
                     <div class="improvement-panel">
                       <span class="improvement-label">AS-IS</span>
-                      <p>
-                        랭킹 데이터는 Riot API 호출량이 많고 업데이트 시간이 긴
-                        데이터입니다. 사용자가 랭킹 페이지에 접근할 때마다 Riot
-                        API나 DB를 직접 조회하면 응답 지연과 Rate Limit 문제가
-                        발생할 수 있고, 업데이트 중 기존 캐시를 덮어 쓰면
-                        불완전한 데이터가 노출될 수 있습니다.
-                      </p>
+                      <ul>
+                        <li>
+                          랭킹 데이터는 Riot API 호출량이 많고 업데이트 시간이
+                          긴 데이터
+                        </li>
+                        <li>
+                          랭킹 페이지 접근마다 Riot API나 DB를 직접 조회하면
+                          응답 지연과 Rate Limit 위험 증가
+                        </li>
+                        <li>
+                          업데이트 중 기존 캐시를 덮어쓸 경우 불완전한 데이터
+                          노출 가능성
+                        </li>
+                      </ul>
                     </div>
                     <div class="improvement-panel to-be">
                       <span class="improvement-label">TO-BE</span>
-                      <p>
-                        Worker Server가 Riot API로 Challenger 300명, Grandmaster
-                        700명 등 랭킹 데이터를 수집한 뒤 Redis에 저장하도록
-                        변경했습니다. 저장 시 임시 키에 먼저 데이터를 구성하고,
-                        완료 후 실제 키로 교체하는
-                        <span class="text-highlight">Atomic Swap 방식</span>을
-                        적용했습니다.
-                      </p>
+                      <ul>
+                        <li>
+                          Worker Server가 Riot API로 Challenger 300명,
+                          Grandmaster 700명 등 랭킹 데이터 수집
+                        </li>
+                        <li>
+                          수집된 랭킹 데이터를 Redis에 저장해 조회 API 응답 속도
+                          개선
+                        </li>
+                        <li>
+                          임시 키 구성 후 실제 키로 교체하는
+                          <span class="text-highlight"
+                            >Atomic Swap 방식 적용</span
+                          >
+                        </li>
+                      </ul>
                     </div>
                   </div>
                   <p>
@@ -608,14 +711,117 @@
                     있도록 개선했습니다.
                   </p>
                 </article>
+
+                <article class="improvement-card">
+                  <div class="improvement-head">
+                    <h3 class="improvement-title">
+                      캐시 미스 상황에서 중복 외부 API 호출 발생
+                    </h3>
+                    <span class="improvement-kicker">상황 6</span>
+                  </div>
+                  <div class="improvement-grid">
+                    <div class="improvement-panel">
+                      <span class="improvement-label">AS-IS</span>
+                      <ul>
+                        <li>
+                          동일 소환사 전적을 여러 사용자가 동시에 검색하는 상황
+                          발생
+                        </li>
+                        <li>
+                          DB나 캐시에 데이터가 없을 때 여러 요청이 Riot API를
+                          중복 호출
+                        </li>
+                        <li>
+                          중복 요청 누적으로 Rate Limit, 전적 조회 지연, 조회
+                          실패 가능성 증가
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="improvement-panel to-be">
+                      <span class="improvement-label">TO-BE</span>
+                      <ul>
+                        <li>
+                          소환사 PUUID 또는 Riot ID 기준
+                          <span class="text-highlight"
+                            >Redis Distributed Lock</span
+                          >
+                          적용
+                        </li>
+                        <li>
+                          첫 요청만 Riot API를 호출하고 나머지 요청은 Lock 해제
+                          대기
+                        </li>
+                        <li>
+                          Lock 해제 후 DB 또는 캐시에 저장된 결과를 재사용하는
+                          조회 흐름 구성
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <p>
+                    이를 통해
+                    <span class="text-highlight">동시성 제어</span>,
+                    <span class="text-highlight">외부 API Rate Limit 대응</span
+                    >, Redis 기반 서비스 안정성 확보를 함께 고려했습니다.
+                  </p>
+                </article>
+
+                <article class="improvement-card">
+                  <div class="improvement-head">
+                    <h3 class="improvement-title">
+                      공략 이미지 파일 저장 위치와 배포 환경 분리 문제
+                    </h3>
+                    <span class="improvement-kicker">상황 7</span>
+                  </div>
+                  <div class="improvement-grid">
+                    <div class="improvement-panel">
+                      <span class="improvement-label">AS-IS</span>
+                      <ul>
+                        <li>
+                          공략글 이미지를 서버 로컬에 저장할 경우 배포 환경에
+                          종속
+                        </li>
+                        <li>
+                          EC2 재배포, 컨테이너 교체, 서버 확장 시 파일 유실 위험
+                        </li>
+                        <li>
+                          애플리케이션 서버와 정적 파일 저장소가 분리되지 않아
+                          접근 경로 불일치 가능
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="improvement-panel to-be">
+                      <span class="improvement-label">TO-BE</span>
+                      <ul>
+                        <li>
+                          이미지 업로드 API를
+                          <span class="text-highlight">AWS S3 기반</span>으로
+                          구성
+                        </li>
+                        <li>
+                          프론트 공략 작성 로직에서 업로드 후 반환된 URL을
+                          Markdown 본문에 삽입
+                        </li>
+                        <li>
+                          애플리케이션 서버와 정적 파일 저장소를 분리해 배포
+                          안정성 확보
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <p>
+                    파일 업로드 API, 클라우드 스토리지, 배포 환경, 프론트-백엔드
+                    연동을 함께 고려한 실서비스형 저장 구조로 정리했습니다.
+                  </p>
+                </article>
               </div>
             </section>
           </article>
 
           <aside class="detail-nav" aria-label="Page sections">
             <a href="#overview">개요</a>
-            <a href="#demo">시연</a>
             <a href="#role">역할</a>
+            <a href="#demo">시연</a>
             <a href="#architecture">시스템 아키텍처</a>
             <a href="#improvements">개선</a>
           </aside>

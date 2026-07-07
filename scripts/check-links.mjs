@@ -24,7 +24,8 @@ function walk(dir) {
 
 function normalizeRef(rawRef) {
   const [pathname, hash] = rawRef.split("#");
-  return { pathname, hash: hash || "" };
+  const cleanPathname = pathname.split("?")[0];
+  return { pathname: cleanPathname, hash: hash || "" };
 }
 
 function hasAnchor(html, id) {
