@@ -7,7 +7,7 @@
     <meta name="description" content="멀티뷰 기반 RPS 프로젝트" />
     <link
       rel="stylesheet"
-      href="../assets/styles.css?v=20260707-rps-improvement-formula"
+      href="../assets/styles.css?v=20260710-table-refine"
     />
   </head>
   <body>
@@ -511,7 +511,15 @@
                     로 개선하고, frame time을 0.320s에서 98.966ms 수준으로
                     줄였습니다.
                   </p>
-                  <table class="data-table">
+                  <table class="data-table rps-performance-table">
+                    <colgroup>
+                      <col class="stage-col" />
+                      <col class="process-col" />
+                      <col />
+                      <col />
+                      <col />
+                      <col />
+                    </colgroup>
                     <thead>
                       <tr>
                         <th>단계</th>
@@ -688,7 +696,7 @@
                         <td>5.376ms</td>
                         <td>4.528ms</td>
                         <td>7.960ms</td>
-                        <td>PostgreSQL 대비 불리</td>
+                        <td>상대적으로 높은 지연</td>
                       </tr>
                     </tbody>
                   </table>
@@ -872,7 +880,7 @@
             </section>
 
             <section id="result" class="detail-section">
-              <h2>회고</h2>
+              <h2>인사이트</h2>
               <div class="learning-list">
                 <article class="learning-item">
                   <span class="learning-index">01</span>
@@ -916,7 +924,7 @@
             <a href="#architecture">시스템 아키텍처</a>
             <a href="#models">모델</a>
             <a href="#improvements">개선</a>
-            <a href="#result">회고</a>
+            <a href="#result">인사이트</a>
           </aside>
         </div>
       </section>
