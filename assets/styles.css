@@ -965,6 +965,54 @@ code {
 .tag-gold {
   background: #fff0b8;
 }
+
+.award-badge {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  min-height: 28px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  line-height: 1.1;
+  font-weight: 950;
+  vertical-align: 0.08em;
+  white-space: nowrap;
+}
+
+.award-entry {
+  display: grid;
+  gap: 4px;
+}
+
+.award-line {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-weight: 850;
+}
+
+.award-project {
+  display: block;
+  padding-left: 2px;
+  color: #111111;
+  font-weight: 500;
+  font-size: 15px
+}
+
+.award-encourage {
+  border: 1px solid #f6d789;
+  background: #fff6d8;
+  color: #9a5b00;
+}
+
+.award-excellence {
+  border: 1px solid #ffd36b;
+  background: #fff0b8;
+  color: #8a4a00;
+}
+
 .tag-blue {
   background: #dcecff;
 }
