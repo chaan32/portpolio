@@ -7,7 +7,7 @@
     <meta name="description" content="ARCANE 프로젝트" />
     <link
       rel="stylesheet"
-      href="../assets/styles.css?v=20260710-table-refine"
+      href="../assets/styles.css?v=20260723-arcane-operations"
     />
   </head>
   <body>
@@ -282,6 +282,163 @@
                   <figcaption>ERD</figcaption>
                 </figure>
               </div>
+            </section>
+
+            <section id="operations" class="detail-section operations-section">
+              <h2>운영 및 배포 환경</h2>
+              <p class="ops-lead">
+                ARCANE은 기능 구현 이후에도 API Server, Worker Server, AI
+                Server를 독립 컨테이너로 운영하고, 배포 자동화와 모니터링을
+                함께 구성해 서비스 상태를 지속적으로 확인할 수 있도록
+                설계했습니다.
+              </p>
+
+              <article class="ops-block">
+                <div class="ops-block-head">
+                  <span class="ops-kicker">Deployment Pipeline</span>
+                  <h3>CI/CD Pipeline</h3>
+                </div>
+                <ol class="pipeline-flow">
+                  <li>
+                    <span class="pipeline-index">01</span>
+                    <h4>GitHub Push</h4>
+                    <p>main 브랜치 변경 사항을 기준으로 배포 workflow를 시작합니다.</p>
+                  </li>
+                  <li>
+                    <span class="pipeline-index">02</span>
+                    <h4>GitHub Actions</h4>
+                    <p>API Server, Worker Server, AI Server 빌드 작업을 실행합니다.</p>
+                  </li>
+                  <li>
+                    <span class="pipeline-index">03</span>
+                    <h4>Docker Image Build</h4>
+                    <p>서버별 실행 환경을 Docker 이미지로 패키징합니다.</p>
+                  </li>
+                  <li>
+                    <span class="pipeline-index">04</span>
+                    <h4>GHCR Push</h4>
+                    <p>빌드된 이미지를 GitHub Container Registry에 업로드합니다.</p>
+                  </li>
+                  <li>
+                    <span class="pipeline-index">05</span>
+                    <h4>EC2 Pull</h4>
+                    <p>AWS EC2에서 최신 컨테이너 이미지를 pull합니다.</p>
+                  </li>
+                  <li>
+                    <span class="pipeline-index">06</span>
+                    <h4>Docker Compose</h4>
+                    <p>docker compose up -d로 서비스 컨테이너를 갱신합니다.</p>
+                  </li>
+                  <li>
+                    <span class="pipeline-index">07</span>
+                    <h4>Deploy</h4>
+                    <p>Nginx와 HTTPS 환경에서 최신 서비스를 운영합니다.</p>
+                  </li>
+                </ol>
+              </article>
+
+              <article class="ops-block">
+                <div class="ops-block-head">
+                  <span class="ops-kicker">Runtime Environment</span>
+                  <h3>운영 환경</h3>
+                </div>
+                <div class="ops-card-grid">
+                  <article class="ops-card">
+                    <h4>AWS EC2</h4>
+                    <ul>
+                      <li>API Server 운영</li>
+                      <li>Worker Server 운영</li>
+                      <li>AI Server 운영</li>
+                    </ul>
+                  </article>
+                  <article class="ops-card">
+                    <h4>Docker Compose</h4>
+                    <ul>
+                      <li>서버별 컨테이너 실행</li>
+                      <li>서비스 의존성 관리</li>
+                      <li>배포 시 컨테이너 갱신</li>
+                    </ul>
+                  </article>
+                  <article class="ops-card">
+                    <h4>Nginx Reverse Proxy</h4>
+                    <ul>
+                      <li>외부 요청 진입점 구성</li>
+                      <li>API 요청 라우팅</li>
+                      <li>HTTPS 트래픽 처리</li>
+                    </ul>
+                  </article>
+                  <article class="ops-card">
+                    <h4>Certbot HTTPS</h4>
+                    <ul>
+                      <li>SSL 인증서 발급</li>
+                      <li>HTTPS 적용</li>
+                      <li>인증서 갱신 기반 마련</li>
+                    </ul>
+                  </article>
+                  <article class="ops-card">
+                    <h4>AWS S3</h4>
+                    <ul>
+                      <li>공략 게시판 이미지 저장</li>
+                      <li>정적 파일 저장소 분리</li>
+                      <li>애플리케이션 서버 부하 분산</li>
+                    </ul>
+                  </article>
+                </div>
+              </article>
+
+              <article class="ops-block">
+                <div class="ops-block-head">
+                  <span class="ops-kicker">Monitoring</span>
+                  <h3>운영 모니터링</h3>
+                </div>
+                <div class="monitoring-grid">
+                  <article class="ops-card monitoring-card">
+                    <h4>Prometheus</h4>
+                    <p>Spring Actuator와 Micrometer 기반 메트릭 수집</p>
+                    <ul>
+                      <li>HTTP Request</li>
+                      <li>JVM Metric</li>
+                      <li>Server Resource</li>
+                    </ul>
+                  </article>
+                  <article class="ops-card monitoring-card">
+                    <h4>Grafana</h4>
+                    <p>운영 지표를 대시보드로 시각화</p>
+                    <ul>
+                      <li>CPU</li>
+                      <li>Memory</li>
+                      <li>JVM</li>
+                      <li>HTTP Request</li>
+                    </ul>
+                  </article>
+                  <article class="ops-card monitoring-card">
+                    <h4>ELK</h4>
+                    <p>Logstash, Elasticsearch, Kibana 기반 로그 추적</p>
+                    <ul>
+                      <li>API 로그</li>
+                      <li>Worker 로그</li>
+                      <li>Error Log</li>
+                      <li>Job 추적</li>
+                    </ul>
+                  </article>
+                </div>
+              </article>
+
+              <article class="ops-block">
+                <div class="ops-block-head">
+                  <span class="ops-kicker">Operational Features</span>
+                  <h3>운영 특징</h3>
+                </div>
+                <div class="ops-feature-grid">
+                  <span>GitHub Actions 기반 자동 배포</span>
+                  <span>Docker Compose 기반 서비스 운영</span>
+                  <span>EC2 운영</span>
+                  <span>HTTPS 적용</span>
+                  <span>로그 모니터링</span>
+                  <span>서버 리소스 모니터링</span>
+                  <span>장애 분석 환경 구축</span>
+                </div>
+              </article>
             </section>
 
             <section id="improvements" class="detail-section">
@@ -859,6 +1016,7 @@
             <a href="#role">역할</a>
             <a href="#demo">시연</a>
             <a href="#architecture">시스템 아키텍처</a>
+            <a href="#operations">운영/배포</a>
             <a href="#improvements">개선</a>
             <a href="#retrospective">인사이트</a>
           </aside>

@@ -1900,6 +1900,190 @@ code {
   word-break: keep-all;
 }
 
+.ops-lead {
+  max-width: 980px;
+  font-weight: 800;
+  line-height: 1.65;
+}
+
+.ops-block {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.ops-block-head {
+  display: grid;
+  gap: 5px;
+}
+
+.ops-kicker {
+  width: fit-content;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #eef5ff;
+  color: var(--blue);
+  font-size: 12px;
+  line-height: 1.1;
+  font-weight: 950;
+  letter-spacing: 0.03em;
+}
+
+.detail-section .ops-block-head h3 {
+  margin: 0;
+  color: #111111;
+  font-size: 21px;
+  line-height: 1.2;
+  font-weight: 950;
+}
+
+.pipeline-flow {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pipeline-flow li {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 7px;
+  min-width: 0;
+  padding: 13px 12px;
+  border: 1px solid #d5e3ff;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+  box-shadow: var(--shadow);
+}
+
+.pipeline-flow li:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  top: 50%;
+  right: -10px;
+  z-index: 1;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: var(--blue);
+  color: #ffffff;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 950;
+  text-align: center;
+  transform: translateY(-50%);
+}
+
+.pipeline-index {
+  display: inline-grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 10px;
+  background: var(--blue);
+  color: #ffffff;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 950;
+}
+
+.pipeline-flow h4,
+.ops-card h4 {
+  margin: 0;
+  color: #111111;
+  font-size: 16px;
+  line-height: 1.25;
+  font-weight: 950;
+  word-break: keep-all;
+}
+
+.pipeline-flow p,
+.ops-card p {
+  margin: 0;
+  color: #475467;
+  font-size: 13px;
+  line-height: 1.5;
+  font-weight: 800;
+  word-break: keep-all;
+}
+
+.ops-card-grid,
+.monitoring-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.ops-card {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  min-width: 0;
+  padding: 15px;
+  border: 1px solid #d9e6ff;
+  border-radius: var(--radius-sm);
+  background: #ffffff;
+  box-shadow: var(--shadow);
+}
+
+.ops-card ul {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ops-card li {
+  position: relative;
+  padding-left: 14px;
+  color: #242424;
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 800;
+  word-break: keep-all;
+}
+
+.ops-card li::before {
+  content: "";
+  position: absolute;
+  top: 0.72em;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--blue);
+  transform: translateY(-50%);
+}
+
+.monitoring-card {
+  background: linear-gradient(180deg, #ffffff 0%, #f7faff 100%);
+}
+
+.ops-feature-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ops-feature-grid span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 6px 11px;
+  border: 1px solid #cfe0ff;
+  border-radius: 999px;
+  background: #eef5ff;
+  color: #174fc7;
+  font-size: 14px;
+  line-height: 1.15;
+  font-weight: 950;
+  word-break: keep-all;
+}
+
 .note-panel {
   background: #f0f6ff;
   color: #111111;
@@ -2232,6 +2416,19 @@ body.is-lightbox-open {
   .sfep-detail .architecture-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .pipeline-flow {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .pipeline-flow li:nth-child(4)::after {
+    content: none;
+  }
+
+  .ops-card-grid,
+  .monitoring-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (min-width: 1181px) {
@@ -2283,6 +2480,9 @@ body.is-lightbox-open {
   .overview-role-grid,
   .skill-card-grid,
   .tech-stack-row,
+  .pipeline-flow,
+  .ops-card-grid,
+  .monitoring-grid,
   .project-grid,
   .detail-layout,
   .media-grid,
@@ -2293,6 +2493,10 @@ body.is-lightbox-open {
 
   .portfolio-layout {
     gap: 34px;
+  }
+
+  .pipeline-flow li::after {
+    content: none;
   }
 
   .profile-sticky {
