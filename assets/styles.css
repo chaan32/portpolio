@@ -1906,10 +1906,18 @@ code {
   line-height: 1.65;
 }
 
+.operations-section {
+  padding: 18px;
+}
+
+.operations-section .ops-lead {
+  margin-top: 8px;
+}
+
 .ops-block {
   display: grid;
-  gap: 14px;
-  margin-top: 18px;
+  gap: 10px;
+  margin-top: 14px;
 }
 
 .ops-block-head {
@@ -1940,7 +1948,7 @@ code {
 .pipeline-flow {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: 10px;
+  gap: 8px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -1950,9 +1958,9 @@ code {
   position: relative;
   display: grid;
   align-content: start;
-  gap: 7px;
+  gap: 6px;
   min-width: 0;
-  padding: 13px 12px;
+  padding: 12px 10px;
   border: 1px solid #d5e3ff;
   border-radius: var(--radius-sm);
   background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
@@ -2010,19 +2018,24 @@ code {
   word-break: keep-all;
 }
 
-.ops-card-grid,
+.ops-card-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+}
+
 .monitoring-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
+  gap: 10px;
 }
 
 .ops-card {
   display: grid;
   align-content: start;
-  gap: 10px;
+  gap: 8px;
   min-width: 0;
-  padding: 15px;
+  padding: 12px;
   border: 1px solid #d9e6ff;
   border-radius: var(--radius-sm);
   background: #ffffff;
@@ -2031,7 +2044,7 @@ code {
 
 .ops-card ul {
   display: grid;
-  gap: 7px;
+  gap: 5px;
   margin: 0;
   padding: 0;
   list-style: none;
