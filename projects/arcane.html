@@ -7,7 +7,7 @@
     <meta name="description" content="ARCANE 프로젝트" />
     <link
       rel="stylesheet"
-      href="../assets/styles.css?v=20260723-arcane-operations"
+      href="../assets/styles.css?v=20260723-improvement-numbering"
     />
   </head>
   <body>
@@ -65,7 +65,7 @@
           <article class="detail-content arcane-detail">
             <div class="overview-role-grid">
               <section id="overview" class="detail-section">
-                <h2>개요</h2>
+                <h2>Overview</h2>
                 <p>
                   ARCANE은 Riot Games API를 기반으로 게임 데이터를 수집·분석하여
                   사용자에게 전적 검색과 다양한 게임 정보를 제공하는
@@ -91,7 +91,7 @@
               </section>
 
               <section id="role" class="detail-section">
-                <h2>역할</h2>
+                <h2>Role</h2>
                 <ul class="role-impact-list">
                   <li>
                     <span class="role-impact-index">01</span>
@@ -160,8 +160,96 @@
               </section>
             </div>
 
+            <section id="highlights" class="detail-section highlights-section">
+              <h2>Project Highlights</h2>
+              <div
+                class="highlight-grid"
+                aria-label="ARCANE project highlights"
+              >
+                <article class="highlight-card">
+                  <span class="highlight-index">01</span>
+                  <h3>MSA</h3>
+                  <p>API / Worker / AI</p>
+                </article>
+                <article class="highlight-card">
+                  <span class="highlight-index">02</span>
+                  <h3>Kafka</h3>
+                  <p>비동기 처리</p>
+                </article>
+                <article class="highlight-card">
+                  <span class="highlight-index">03</span>
+                  <h3>Redis Lock</h3>
+                  <p>동시성 제어</p>
+                </article>
+                <article class="highlight-card">
+                  <span class="highlight-index">04</span>
+                  <h3>AWS</h3>
+                  <p>EC2 / S3</p>
+                </article>
+                <article class="highlight-card">
+                  <span class="highlight-index">05</span>
+                  <h3>Docker Compose</h3>
+                  <p>서비스 운영</p>
+                </article>
+                <article class="highlight-card">
+                  <span class="highlight-index">06</span>
+                  <h3>GitHub Actions</h3>
+                  <p>CI/CD</p>
+                </article>
+                <article class="highlight-card">
+                  <span class="highlight-index">07</span>
+                  <h3>Monitoring</h3>
+                  <p>Prometheus / Grafana / ELK</p>
+                </article>
+                <article class="highlight-card">
+                  <span class="highlight-index">08</span>
+                  <h3>Champion API</h3>
+                  <p>93% 응답 개선</p>
+                </article>
+                <article class="highlight-card">
+                  <span class="highlight-index">09</span>
+                  <h3>Elasticsearch</h3>
+                  <p>검색 성능 개선</p>
+                </article>
+              </div>
+            </section>
+
+            <section id="why-msa" class="detail-section">
+              <h2>Why MSA?</h2>
+              <div class="why-msa-grid">
+                <article class="ops-card msa-card">
+                  <h3>API Server</h3>
+                  <ul>
+                    <li>사용자 요청 처리</li>
+                    <li>인증 및 API 응답</li>
+                    <li>빠른 응답 유지</li>
+                  </ul>
+                </article>
+                <article class="ops-card msa-card">
+                  <h3>Worker Server</h3>
+                  <ul>
+                    <li>Riot API 데이터 수집</li>
+                    <li>장시간 배치 작업 처리</li>
+                    <li>Kafka Consumer 기반 작업 수행</li>
+                  </ul>
+                </article>
+                <article class="ops-card msa-card">
+                  <h3>AI Server</h3>
+                  <ul>
+                    <li>AI 모델 추론</li>
+                    <li>게임 분석 결과 생성</li>
+                    <li>독립적인 AI 서비스 운영</li>
+                  </ul>
+                </article>
+              </div>
+              <p class="architecture-summary">
+                사용자 요청과 장시간 작업을 분리하여 서비스 응답성을 유지하고,
+                각 서버가 독립적으로 확장 가능한 구조를 설계했습니다.
+              </p>
+            </section>
+
             <section id="demo" class="detail-section">
-              <h2>프로젝트 기능 및 시연</h2>
+              <h2>Features & Demo</h2>
               <div class="media-grid feature-demo-grid">
                 <!-- 전적검색 -->
                 <figure class="media-card">
@@ -264,14 +352,14 @@
             </section>
 
             <section id="architecture" class="detail-section">
-              <h2>시스템 아키텍처</h2>
+              <h2>System Architecture</h2>
               <div class="media-grid architecture-grid">
                 <figure class="media-card wide-media architecture-image">
                   <img
                     src="../assets/notion/arcane/73fc8bd0bf5ed103.png"
                     alt="ARCANE 시스템 아키텍처"
                   />
-                  <figcaption>시스템 아키텍처</figcaption>
+                  <figcaption>System Architecture</figcaption>
                 </figure>
 
                 <figure class="media-card wide-media architecture-erd">
@@ -282,15 +370,144 @@
                   <figcaption>ERD</figcaption>
                 </figure>
               </div>
+              <article class="ops-block">
+                <div class="ops-block-head">
+                  <span class="ops-kicker">Operational Architecture</span>
+                  <h3>Operational Architecture</h3>
+                </div>
+                <ol class="service-flow ops-architecture-flow">
+                  <li>
+                    <span class="flow-step">01</span>
+                    <h3>Client</h3>
+                    <p>서비스 요청 진입</p>
+                  </li>
+                  <li>
+                    <span class="flow-step">02</span>
+                    <h3>Nginx</h3>
+                    <p>Reverse Proxy와 HTTPS 처리</p>
+                  </li>
+                  <li>
+                    <span class="flow-step">03</span>
+                    <h3>API Server</h3>
+                    <p>인증, 응답, 이벤트 발행</p>
+                  </li>
+                  <li>
+                    <span class="flow-step">04</span>
+                    <h3>Kafka</h3>
+                    <p>장시간 작업 메시지 큐잉</p>
+                  </li>
+                  <li>
+                    <span class="flow-step">05</span>
+                    <h3>Worker Server</h3>
+                    <p>Riot 데이터 수집과 분석 처리</p>
+                  </li>
+                  <li>
+                    <span class="flow-step">06</span>
+                    <h3>MongoDB</h3>
+                    <p>Match Raw Data 저장</p>
+                  </li>
+                  <li>
+                    <span class="flow-step">07</span>
+                    <h3>MySQL</h3>
+                    <p>조회용 정형 데이터 저장</p>
+                  </li>
+                  <li>
+                    <span class="flow-step">08</span>
+                    <h3>Redis</h3>
+                    <p>캐시와 Distributed Lock</p>
+                  </li>
+                  <li>
+                    <span class="flow-step">09</span>
+                    <h3>Prometheus</h3>
+                    <p>메트릭 수집</p>
+                  </li>
+                  <li>
+                    <span class="flow-step">10</span>
+                    <h3>Grafana</h3>
+                    <p>운영 지표 시각화</p>
+                  </li>
+                  <li>
+                    <span class="flow-step">11</span>
+                    <h3>ELK</h3>
+                    <p>로그 검색과 장애 분석</p>
+                  </li>
+                  <li>
+                    <span class="flow-step">12</span>
+                    <h3>Administrator</h3>
+                    <p>운영 상태 확인과 대응</p>
+                  </li>
+                </ol>
+              </article>
+            </section>
+
+            <section id="kafka-flow" class="detail-section">
+              <h2>Kafka Data Flow</h2>
+              <p>
+                사용자 요청은 API Server에서 짧게 수신하고, Riot 데이터 수집과
+                챔피언 분석처럼 오래 걸리는 작업은 Kafka 기반 비동기 흐름으로
+                분리했습니다.
+              </p>
+              <ol class="service-flow kafka-data-flow">
+                <li>
+                  <span class="flow-step">01</span>
+                  <h3>Client</h3>
+                  <p>전적 검색과 분석 요청 발생</p>
+                </li>
+                <li>
+                  <span class="flow-step">02</span>
+                  <h3>API Server</h3>
+                  <p>요청 검증 후 작업 이벤트 발행</p>
+                </li>
+                <li>
+                  <span class="flow-step">03</span>
+                  <h3>Kafka Topic</h3>
+                  <p>jobId 기반 작업 메시지 큐잉</p>
+                </li>
+                <li>
+                  <span class="flow-step">04</span>
+                  <h3>Worker Server</h3>
+                  <p>Consumer가 작업 메시지를 가져와 처리</p>
+                </li>
+                <li>
+                  <span class="flow-step">05</span>
+                  <h3>MongoDB</h3>
+                  <p>Match Raw Data 저장</p>
+                </li>
+                <li>
+                  <span class="flow-step">06</span>
+                  <h3>Champion Analysis</h3>
+                  <p>랭커 데이터 기반 통계 계산</p>
+                </li>
+                <li>
+                  <span class="flow-step">07</span>
+                  <h3>MySQL</h3>
+                  <p>조회용 분석 결과 저장</p>
+                </li>
+                <li>
+                  <span class="flow-step">08</span>
+                  <h3>Kafka Ack</h3>
+                  <p>Worker 처리 완료 후 작업 상태 전달</p>
+                </li>
+                <li>
+                  <span class="flow-step">09</span>
+                  <h3>API Server</h3>
+                  <p>처리 상태와 저장 결과 확인</p>
+                </li>
+                <li>
+                  <span class="flow-step">10</span>
+                  <h3>User Response</h3>
+                  <p>완료된 분석 결과를 조회 응답으로 제공</p>
+                </li>
+              </ol>
             </section>
 
             <section id="operations" class="detail-section operations-section">
-              <h2>운영 및 배포 환경</h2>
+              <h2>Deployment & Operations</h2>
               <p class="ops-lead">
-                ARCANE은 기능 구현 이후에도 API Server, Worker Server, AI
-                Server를 독립 컨테이너로 운영하고, 배포 자동화와 모니터링을
-                함께 구성해 서비스 상태를 지속적으로 확인할 수 있도록
-                설계했습니다.
+                <!-- ARCANE은 기능 구현 이후에도  -->
+                기능 구현 이후에도 API Server, Worker Server, AI Server를 독립
+                컨테이너로 운영하고, 배포 자동화와 모니터링을 함께 구성해 서비스
+                상태를 지속적으로 확인할 수 있도록 설계했습니다.
               </p>
 
               <article class="ops-block">
@@ -302,12 +519,18 @@
                   <li>
                     <span class="pipeline-index">01</span>
                     <h4>GitHub Push</h4>
-                    <p>main 브랜치 변경 사항을 기준으로 배포 workflow를 시작합니다.</p>
+                    <p>
+                      main 브랜치 변경 사항을 기준으로 배포 workflow를
+                      시작합니다.
+                    </p>
                   </li>
                   <li>
                     <span class="pipeline-index">02</span>
                     <h4>GitHub Actions</h4>
-                    <p>API Server, Worker Server, AI Server 빌드 작업을 실행합니다.</p>
+                    <p>
+                      API Server, Worker Server, AI Server 빌드 작업을
+                      실행합니다.
+                    </p>
                   </li>
                   <li>
                     <span class="pipeline-index">03</span>
@@ -317,7 +540,9 @@
                   <li>
                     <span class="pipeline-index">04</span>
                     <h4>GHCR Push</h4>
-                    <p>빌드된 이미지를 GitHub Container Registry에 업로드합니다.</p>
+                    <p>
+                      빌드된 이미지를 GitHub Container Registry에 업로드합니다.
+                    </p>
                   </li>
                   <li>
                     <span class="pipeline-index">05</span>
@@ -340,7 +565,7 @@
               <article class="ops-block">
                 <div class="ops-block-head">
                   <span class="ops-kicker">Runtime Environment</span>
-                  <h3>운영 환경</h3>
+                  <h3>Runtime Environment</h3>
                 </div>
                 <div class="ops-card-grid">
                   <article class="ops-card">
@@ -354,9 +579,13 @@
                   <article class="ops-card">
                     <h4>Docker Compose</h4>
                     <ul>
-                      <li>서버별 컨테이너 실행</li>
+                      <li>
+                        API / Worker / AI Server, Kafka, Redis, MongoDB, MySQL을
+                        하나의 compose 파일에서 관리
+                      </li>
                       <li>서비스 의존성 관리</li>
-                      <li>배포 시 컨테이너 갱신</li>
+                      <li>운영 환경 일관성 유지</li>
+                      <li>신규 배포 시 컨테이너 자동 교체</li>
                     </ul>
                   </article>
                   <article class="ops-card">
@@ -389,7 +618,7 @@
               <article class="ops-block">
                 <div class="ops-block-head">
                   <span class="ops-kicker">Monitoring</span>
-                  <h3>운영 모니터링</h3>
+                  <h3>Monitoring</h3>
                 </div>
                 <div class="monitoring-grid">
                   <article class="ops-card monitoring-card">
@@ -405,20 +634,23 @@
                     <h4>Grafana</h4>
                     <p>운영 지표를 대시보드로 시각화</p>
                     <ul>
+                      <li>JVM Heap</li>
                       <li>CPU</li>
                       <li>Memory</li>
-                      <li>JVM</li>
-                      <li>HTTP Request</li>
+                      <li>HTTP Request Count</li>
+                      <li>HTTP Response Time</li>
+                      <li>Thread</li>
                     </ul>
                   </article>
                   <article class="ops-card monitoring-card">
                     <h4>ELK</h4>
                     <p>Logstash, Elasticsearch, Kibana 기반 로그 추적</p>
                     <ul>
-                      <li>API 로그</li>
-                      <li>Worker 로그</li>
-                      <li>Error Log</li>
-                      <li>Job 추적</li>
+                      <li>API Log</li>
+                      <li>Worker Log</li>
+                      <li>Exception</li>
+                      <li>Job Tracking</li>
+                      <li>Trace 검색</li>
                     </ul>
                   </article>
                 </div>
@@ -427,7 +659,7 @@
               <article class="ops-block">
                 <div class="ops-block-head">
                   <span class="ops-kicker">Operational Features</span>
-                  <h3>운영 특징</h3>
+                  <h3>Operational Features</h3>
                 </div>
                 <div class="ops-feature-grid">
                   <span>GitHub Actions 기반 자동 배포</span>
@@ -441,8 +673,63 @@
               </article>
             </section>
 
+            <section id="why-tech" class="detail-section">
+              <h2>Why Technology?</h2>
+              <div class="why-tech-grid">
+                <article class="ops-card tech-reason-card">
+                  <h3>Kafka</h3>
+                  <ul>
+                    <li>비동기 처리</li>
+                    <li>서버 간 결합도 감소</li>
+                    <li>사용자 요청과 배치 작업 분리</li>
+                  </ul>
+                </article>
+                <article class="ops-card tech-reason-card">
+                  <h3>Redis</h3>
+                  <ul>
+                    <li>Cache</li>
+                    <li>Distributed Lock</li>
+                    <li>외부 API 중복 호출 방지</li>
+                  </ul>
+                </article>
+                <article class="ops-card tech-reason-card">
+                  <h3>MongoDB</h3>
+                  <ul>
+                    <li>Match Raw Data 저장</li>
+                    <li>유연한 스키마</li>
+                    <li>분석 데이터 활용</li>
+                  </ul>
+                </article>
+                <article class="ops-card tech-reason-card">
+                  <h3>Elasticsearch</h3>
+                  <ul>
+                    <li>자동완성</li>
+                    <li>전문 검색</li>
+                    <li>LIKE 검색 개선</li>
+                  </ul>
+                </article>
+                <article class="ops-card tech-reason-card">
+                  <h3>Prometheus / Grafana</h3>
+                  <ul>
+                    <li>JVM Heap</li>
+                    <li>CPU / Memory</li>
+                    <li>HTTP Request Count / Response Time</li>
+                    <li>Thread 모니터링</li>
+                  </ul>
+                </article>
+                <article class="ops-card tech-reason-card">
+                  <h3>ELK</h3>
+                  <ul>
+                    <li>API Log / Worker Log</li>
+                    <li>Exception / Job Tracking</li>
+                    <li>Trace 검색과 장애 분석</li>
+                  </ul>
+                </article>
+              </div>
+            </section>
+
             <section id="improvements" class="detail-section">
-              <h2>개선 사항</h2>
+              <h2>Improvements</h2>
               <div class="improvement-list">
                 <article class="improvement-card">
                   <div class="improvement-head">
@@ -921,6 +1208,56 @@
                     <span class="text-highlight">외부 API Rate Limit 대응</span
                     >, Redis 기반 서비스 안정성 확보를 함께 고려했습니다.
                   </p>
+                  <div class="flow-note">
+                    <h4>Redis Distributed Lock Flow</h4>
+                    <ol class="service-flow lock-flow">
+                      <li>
+                        <span class="flow-step">01</span>
+                        <h3>User A</h3>
+                        <p>동일 소환사 최초 검색 요청</p>
+                      </li>
+                      <li>
+                        <span class="flow-step">02</span>
+                        <h3>Redis Lock</h3>
+                        <p>PUUID 또는 Riot ID 기준 Lock 획득</p>
+                      </li>
+                      <li>
+                        <span class="flow-step">03</span>
+                        <h3>Riot API</h3>
+                        <p>최초 요청만 외부 API 호출</p>
+                      </li>
+                      <li>
+                        <span class="flow-step">04</span>
+                        <h3>MongoDB</h3>
+                        <p>Match Raw Data 저장</p>
+                      </li>
+                      <li>
+                        <span class="flow-step">05</span>
+                        <h3>MySQL</h3>
+                        <p>조회용 전적 결과 저장</p>
+                      </li>
+                      <li>
+                        <span class="flow-step">06</span>
+                        <h3>Unlock</h3>
+                        <p>저장 완료 후 Lock 해제</p>
+                      </li>
+                      <li>
+                        <span class="flow-step">07</span>
+                        <h3>Users B, C, D</h3>
+                        <p>동시 검색 요청은 대기 후 재조회</p>
+                      </li>
+                      <li>
+                        <span class="flow-step">08</span>
+                        <h3>DB Read</h3>
+                        <p>저장된 데이터를 재사용해 응답</p>
+                      </li>
+                    </ol>
+                    <p>
+                      동시에 여러 사용자가 같은 소환사를 검색해도 최초 요청만
+                      Riot API를 호출하고, 이후 요청은 저장된 데이터를
+                      재사용하는 구조입니다.
+                    </p>
+                  </div>
                 </article>
 
                 <article class="improvement-card">
@@ -975,7 +1312,7 @@
             </section>
 
             <section id="retrospective" class="detail-section">
-              <h2>인사이트</h2>
+              <h2>Insights</h2>
               <div class="learning-list">
                 <article class="learning-item">
                   <span class="learning-index">01</span>
@@ -1012,13 +1349,17 @@
           </article>
 
           <aside class="detail-nav" aria-label="Page sections">
-            <a href="#overview">개요</a>
-            <a href="#role">역할</a>
-            <a href="#demo">시연</a>
-            <a href="#architecture">시스템 아키텍처</a>
-            <a href="#operations">운영/배포</a>
-            <a href="#improvements">개선</a>
-            <a href="#retrospective">인사이트</a>
+            <a href="#overview">Overview</a>
+            <a href="#role">Role</a>
+            <a href="#highlights">Highlights</a>
+            <a href="#why-msa">Why MSA</a>
+            <a href="#demo">Demo</a>
+            <a href="#architecture">Architecture</a>
+            <a href="#kafka-flow">Kafka Flow</a>
+            <a href="#operations">Operations</a>
+            <a href="#why-tech">Why Tech</a>
+            <a href="#improvements">Improvements</a>
+            <a href="#retrospective">Insights</a>
           </aside>
         </div>
       </section>
